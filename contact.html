@@ -1,24 +1,26 @@
-!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <title>Contact | CyberSafe BD</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 0; }
     header { background: #2c3e50; color: white; text-align: center; padding: 20px; }
     nav { background: #34495e; padding: 10px; text-align: center; }
     nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
-    section { padding: 20px; }
-    form { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; }
-    input, textarea { width: 100%; padding: 10px; margin: 5px 0; border-radius: 5px; border: 1px solid #ccc; }
+    section { padding: 20px; max-width: 600px; margin: auto; }
+    form { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    label { display: block; margin: 10px 0 5px; font-weight: bold; }
+    input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
     button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
-    footer { background: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    button:hover { background: #219150; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Contact Us</h1>
+    <h1>CyberSafe BD</h1>
+    <p>যোগাযোগ করুন | Contact Us</p>
   </header>
 
   <nav>
@@ -28,20 +30,56 @@
   </nav>
 
   <section>
-    <h2>যোগাযোগ করুন</h2>
-    <form>
-      <label>আপনার নাম</label>
-      <input type="text" placeholder="নাম লিখুন">
-      <label>ইমেইল</label>
-      <input type="email" placeholder="ইমেইল লিখুন">
-      <label>বার্তা</label>
-      <textarea rows="4" placeholder="আপনার বার্তা লিখুন"></textarea>
-      <button type="submit">Send</button>
-    </form>
+    <!-- Language Switcher -->
+    <p>
+      <a href="#" onclick="showBangla()">বাংলা</a> | 
+      <a href="#" onclick="showEnglish()">English</a>
+    </p>
+
+    <!-- Bangla Form -->
+    <div id="bangla">
+      <form>
+        <label for="name">আপনার নাম লিখুন:</label>
+        <input type="text" id="name" name="name" placeholder="নাম লিখুন">
+
+        <label for="email">আপনার ইমেইল লিখুন:</label>
+        <input type="email" id="email" name="email" placeholder="ইমেইল লিখুন">
+
+        <label for="message">আপনার বার্তা লিখুন:</label>
+        <textarea id="message" name="message" rows="5" placeholder="বার্তা লিখুন"></textarea>
+
+        <button type="submit">পাঠান</button>
+      </form>
+    </div>
+
+    <!-- English Form -->
+    <div id="english" style="display:none;">
+      <form>
+        <label for="name-en">Your Name:</label>
+        <input type="text" id="name-en" name="name" placeholder="Enter your name">
+
+        <label for="email-en">Your Email:</label>
+        <input type="email" id="email-en" name="email" placeholder="Enter your email">
+
+        <label for="message-en">Your Message:</label>
+        <textarea id="message-en" name="message" rows="5" placeholder="Write your message"></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 CyberSafe BD</p>
-  </footer>
+  <script>
+    function showBangla() {
+      document.getElementById("bangla").style.display = "block";
+      document.getElementById("english").style.display = "none";
+    }
+    function showEnglish() {
+      document.getElementById("bangla").style.display = "none";
+      document.getElementById("english").style.display = "block";
+    }
+  </script>
 </body>
 </html>
+
+
