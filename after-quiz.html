@@ -44,9 +44,20 @@
   <script>
     document.getElementById("afterQuizForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      // এখানে পরে আমরা ডেটা সংরক্ষণ + বিশ্লেষণ যোগ করব
-      alert("✅ Thank you! Your answers have been recorded.");
-      window.location.href = "index.html"; // আবার home এ নিয়ে যাবে
+
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "no") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "no") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "extra") score++;
+
+      localStorage.setItem("afterScore", score);
+
+      let before = localStorage.getItem("beforeScore") || 0;
+      let after = localStorage.getItem("afterScore") || 0;
+
+      alert("📊 Result:\nBefore Quiz: " + before + "/3\nAfter Quiz: " + after + "/3\nImprovement: " + (after - before));
+
+      window.location.href = "index.html"; // back to home
     });
   </script>
 </body>
