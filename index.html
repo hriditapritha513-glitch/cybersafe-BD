@@ -1,12 +1,13 @@
 
  
 
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <title>CyberSafe BD</title>
-  <meta name="description" content="বাংলা ও ইংরেজিতে সহজ সাইবার নিরাপত্তা শেখার প্ল্যাটফর্ম">
+  <meta name="description" content="Simple cyber security learning platform in Bangla and English">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 0; }
@@ -24,7 +25,7 @@
 <body>
   <header>
     <h1>CyberSafe BD</h1>
-    <p>বাংলা ও ইংরেজিতে সহজ সাইবার নিরাপত্তা শেখার প্ল্যাটফর্ম</p>
+    <p>Easy cyber security learning platform in Bangla and English</p>
   </header>
 
   <nav>
@@ -44,25 +45,25 @@
   <!-- Bangla Content -->
   <div id="bangla">
     <section id="tips">
-      <h2>অনলাইন নিরাপত্তার টিপস</h2>
+      <h2>Online Safety Tips</h2>
       <ul>
         <li>শক্তিশালী পাসওয়ার্ড ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
-        <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
-        <li>দুই ধাপ যাচাইকরণ (2FA) চালু করুন।</li>
-        <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
+        <li>অজানা লিঙ্কে ক্লিক করবেন না।</li>
+        <li>টু-স্টেপ ভেরিফিকেশন (2FA) চালু করুন।</li>
+        <li>সোশ্যাল মিডিয়ায় কম ব্যক্তিগত তথ্য শেয়ার করুন।</li>
       </ul>
     </section>
 
     <section id="quiz">
-      <h2>কুইজ (২৫ প্রশ্ন)</h2>
+      <h2>Quiz (25 questions)</h2>
       <div class="quiz">
         <form id="quizFormBN">
 
-          <p>1. শুধুমাত্র নাম ব্যবহার করে password রাখা কি নিরাপদ?</p>
+          <p>1. শুধুমাত্র নাম দিয়ে পাসওয়ার্ড ব্যবহার করা কি নিরাপদ?</p>
           <input type="radio" name="q1" value="no"> না<br>
           <input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
 
-          <p>2. অচেনা ইমেইলে suspicious লিঙ্ক এলে কী করবেন?</p>
+          <p>2. অচেনা ইমেইলে সন্দেহজনক লিঙ্ক পেলে কী করবেন?</p>
           <input type="radio" name="q2" value="ignore"> উপেক্ষা করব<br>
           <input type="radio" name="q2" value="click"> ক্লিক করব<br><br>
 
@@ -70,7 +71,7 @@
           <input type="radio" name="q3" value="two"> Two-Factor Authentication<br>
           <input type="radio" name="q3" value="wrong"> Two Fast Action<br><br>
 
-          <p>4. ফেসবুক অ্যাকাউন্টে পাসওয়ার্ড অন্যকে দেওয়া উচিত?</p>
+          <p>4. ফেসবুক পাসওয়ার্ড অন্যকে দেওয়া উচিত?</p>
           <input type="radio" name="q4" value="no"> না<br>
           <input type="radio" name="q4" value="yes"> হ্যাঁ<br><br>
 
@@ -163,7 +164,9 @@
         <p id="resultBN"></p>
       </div>
     </section>
-  </div><!-- English Content -->
+  </div>
+
+  <!-- English Content -->
   <div id="english" style="display:none;">
     <section id="tipsEN">
       <h2>Online Safety Tips</h2>
@@ -180,6 +183,7 @@
       <div class="quiz">
         <form id="quizFormEN">
 
+          <!-- English quiz same as before (25 Qs) -->
           <p>1. Is using only your name as a password safe?</p>
           <input type="radio" name="q1" value="no"> No<br>
           <input type="radio" name="q1" value="yes"> Yes<br><br>
@@ -292,30 +296,52 @@
   </footer>
 
   <script>
+    function showBangla() {<script>
     function showBangla() {
       document.getElementById("bangla").style.display = "block";
       document.getElementById("english").style.display = "none";
     }
+
     function showEnglish() {
       document.getElementById("bangla").style.display = "none";
       document.getElementById("english").style.display = "block";
     }
 
+    // Answer keys
+    const answersBN = {
+      q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
+      q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
+      q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
+      q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
+      q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
+    };
+
+    const answersEN = answersBN; // same answers
+
     function checkQuiz(lang) {
-      let form = document.getElementById("quizForm" + lang);
-      let result = document.getElementById("result" + lang);
-      let correct = {
-        q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
-        q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
-        q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
-        q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
-        q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
-      };
       let score = 0;
-      for (let q in correct) {
-        if(form[q] && form[q].value === correct[q]) score++;
+      let total = 25;
+      let form, answers, resultId;
+
+      if (lang === "BN") {
+        form = document.getElementById("quizFormBN");
+        answers = answersBN;
+        resultId = "resultBN";
+      } else {
+        form = document.getElementById("quizFormEN");
+        answers = answersEN;
+        resultId = "resultEN";
       }
-      result.innerHTML = "Your Score: " + score + " / 25";
+
+      for (let q in answers) {
+        let selected = form.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+
+      document.getElementById(resultId).innerText = 
+        "You scored " + score + " out of " + total;
     }
   </script>
 </body>
