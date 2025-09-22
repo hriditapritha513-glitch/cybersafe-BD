@@ -1,41 +1,64 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <title>About | CyberSafe BD</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 0; }
-    header { background: #2c3e50; color: white; text-align: center; padding: 20px; }
-    nav { background: #34495e; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
-    section { padding: 20px; }
-    footer { background: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>About CyberSafe BD</h1>
-  </header>
+<h1>আমাদের সম্পর্কে | About Us</h1>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- Language Switcher -->
+<p>
+  <a href="#" onclick="showBangla()">বাংলা</a> | 
+  <a href="#" onclick="showEnglish()">English</a>
+</p>
 
-  <section>
-    <h2>আমাদের সম্পর্কে</h2>
-    <p>CyberSafe BD একটি ফ্রি প্ল্যাটফর্ম, যেখানে বাংলায় সহজভাবে সাইবার নিরাপত্তা শেখানো হয়। 
-       আমাদের লক্ষ্য হলো বাংলাদেশে প্রত্যেক ব্যবহারকারীকে অনলাইনে নিরাপদ রাখা।</p>
-    <p>আমরা বিশ্বাস করি—সচেতনতা হলো নিরাপত্তার প্রথম ধাপ।</p>
-  </section>
+<!-- Bangla Version -->
+<div id="bangla">
+  <p>
+    <b>CyberSafe BD</b> হলো একটি উদ্যোগ, যার মূল লক্ষ্য বাংলাদেশের 
+    ইন্টারনেট ব্যবহারকারীদের সাইবার নিরাপত্তা সম্পর্কে সচেতন করা। 
+    আধুনিক যুগে প্রযুক্তি আমাদের জীবনকে সহজ করছে, কিন্তু এর সাথে সাথে 
+    বাড়ছে বিভিন্ন অনলাইন ঝুঁকি। আমরা চাই, সবাই যেন নিরাপদে 
+    ডিজিটাল দুনিয়া ব্যবহার করতে পারে।
+  </p>
 
-  <footer>
-    <p>© 2025 CyberSafe BD</p>
-  </footer>
-</body>
-</html>
+  <h2>আমাদের মিশন</h2>
+  <p>
+    মানুষের মাঝে অনলাইন নিরাপত্তা সম্পর্কে সচেতনতা ছড়িয়ে দেওয়া এবং 
+    ব্যবহারকারীদের সহজ উপায়ে নিজেদের সুরক্ষিত রাখার দক্ষতা অর্জনে সহায়তা করা।
+  </p>
 
+  <h2>আমাদের ভিশন</h2>
+  <p>
+    একটি সুরক্ষিত ও সচেতন ডিজিটাল বাংলাদেশ গড়ে তোলা, 
+    যেখানে প্রতিটি নাগরিক আত্মবিশ্বাসের সাথে ইন্টারনেট ব্যবহার করতে পারবে।
+  </p>
+</div>
 
+<!-- English Version -->
+<div id="english" style="display:none;">
+  <p>
+    <b>CyberSafe BD</b> is an initiative dedicated to raising awareness 
+    about cyber security among internet users in Bangladesh. 
+    Technology is making our lives easier, but at the same time, 
+    online threats are increasing. Our goal is to help everyone 
+    stay safe while exploring the digital world.
+  </p>
 
+  <h2>Our Mission</h2>
+  <p>
+    To spread awareness about online safety and empower users 
+    with practical knowledge to protect themselves in the digital space.
+  </p>
+
+  <h2>Our Vision</h2>
+  <p>
+    To build a secure and aware digital Bangladesh where every citizen 
+    can use the internet with confidence.
+  </p>
+</div>
+
+<script>
+  function showBangla() {
+    document.getElementById("bangla").style.display = "block";
+    document.getElementById("english").style.display = "none";
+  }
+  function showEnglish() {
+    document.getElementById("bangla").style.display = "none";
+    document.getElementById("english").style.display = "block";
+  }
+</script>
