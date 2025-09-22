@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Result - CyberSafe BD</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>📊 CyberSafe BD - Result</h1>
+  <p id="summary"></p>
+
+  <canvas id="resultChart" width="300" height="200"></canvas>
+
+  <script>
+    // লোকাল স্টোরেজ থেকে স্কোর আনা
+    let before = localStorage.getItem("beforeScore");
+    let after = localStorage.getItem("afterScore");
+
+    // যদি null হয়, তবে 0 ধরে নাও
+    before = before ? parseInt(before) : 0;
+    after = after ? parseInt(after) : 0;
+
+    // Summary টেক্সট
+    document.getElementById("summary").innerText =
+      "Before Quiz Score: " + before + " / 2\n" +
+      "After Quiz Score: " + after + " / 2";
+
+    // চার্ট আঁকা
+    const ctx = document.getElementById('resultChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Before Quiz', 'After Quiz'],
+        datasets: [{
+          label: 'Score',
+          data: [before, after],
+          borderWidth: 1,
+          backgroundColor: ['red','green']
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true, max: 2 }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
