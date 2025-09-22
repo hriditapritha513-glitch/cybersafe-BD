@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -8,9 +9,12 @@
     header { background: #2c3e50; color: white; text-align: center; padding: 20px; }
     nav { background: #34495e; padding: 10px; text-align: center; }
     nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
+    nav a:hover { color: #f1c40f; }
     section { padding: 20px; }
     .quiz { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
     button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #2ecc71; }
+    footer { background: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -20,9 +24,9 @@
   </header>
 
   <nav>
-    <a href="#tips">Tips</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#resources">Resources</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <section id="tips">
@@ -32,13 +36,18 @@
       <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
       <li>দুই ধাপ যাচাইকরণ (2FA) চালু করুন।</li>
       <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
+      <li>অ্যান্টিভাইরাস ও ফায়ারওয়াল ব্যবহার করুন।</li>
+      <li>পাবলিক ওয়াইফাই ব্যবহার করার সময় VPN ব্যবহার করুন।</li>
+      <li>অচেনা USB/পেনড্রাইভ লাগাবেন না।</li>
+      <li>নিয়মিত সফটওয়্যার আপডেট করুন।</li>
     </ul>
   </section>
 
   <section id="quiz">
-    <h2>Quick Quiz</h2>
+    <h2>CyberSafe Quiz (25 প্রশ্ন)</h2>
     <div class="quiz">
       <form id="quizForm">
+        <!-- ২৫টা প্রশ্ন -->
         <p>1. Password এ কেবল নাম ও জন্মতারিখ ব্যবহার করা কি নিরাপদ?</p>
         <input type="radio" name="q1" value="no"> না<br>
         <input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
@@ -46,6 +55,99 @@
         <p>2. অচেনা ইমেইলে suspicious লিঙ্ক এলে কী করবেন?</p>
         <input type="radio" name="q2" value="ignore"> উপেক্ষা করব<br>
         <input type="radio" name="q2" value="click"> ক্লিক করব<br><br>
+
+        <p>3. VPN এর কাজ কী?</p>
+        <input type="radio" name="q3" value="secure"> নিরাপদ ব্রাউজিং<br>
+        <input type="radio" name="q3" value="useless"> কোনো কাজ নেই<br><br>
+
+        <p>4. 2FA চালু করলে কী সুবিধা?</p>
+        <input type="radio" name="q4" value="extra"> অতিরিক্ত সিকিউরিটি<br>
+        <input type="radio" name="q4" value="none"> কোনো সুবিধা নেই<br><br>
+
+        <p>5. পাবলিক ওয়াইফাই-এ ব্যাংক লেনদেন করা কি নিরাপদ?</p>
+        <input type="radio" name="q5" value="no"> না<br>
+        <input type="radio" name="q5" value="yes"> হ্যাঁ<br><br>
+
+        <p>6. অ্যান্টিভাইরাস কেন ব্যবহার করা হয়?</p>
+        <input type="radio" name="q6" value="virus"> ভাইরাস থেকে রক্ষা<br>
+        <input type="radio" name="q6" value="none"> শুধু সাজানোর জন্য<br><br>
+
+        <p>7. phishing কী?</p>
+        <input type="radio" name="q7" value="fake"> ভুয়া ওয়েবসাইট/ইমেইল দিয়ে তথ্য চুরি<br>
+        <input type="radio" name="q7" value="fish"> মাছ ধরা<br><br>
+
+        <p>8. Software update কেন দরকার?</p>
+        <input type="radio" name="q8" value="fix"> বাগ ফিক্স + নিরাপত্তা বৃদ্ধি<br>
+        <input type="radio" name="q8" value="waste"> সময় নষ্ট<br><br>
+
+        <p>9. Password অন্যকে দেয়া কি উচিত?</p>
+        <input type="radio" name="q9" value="no"> না<br>
+        <input type="radio" name="q9" value="yes"> হ্যাঁ<br><br>
+
+        <p>10. Social media তে অতিরিক্ত তথ্য শেয়ার করলে কী ঝুঁকি?</p>
+        <input type="radio" name="q10" value="risk"> প্রতারণা/হ্যাকিং<br>
+        <input type="radio" name="q10" value="none"> কোনো ঝুঁকি নেই<br><br>
+
+        <!-- বাকি প্রশ্নগুলো একইভাবে -->
+        <p>11. OTP শেয়ার করা কি নিরাপদ?</p>
+        <input type="radio" name="q11" value="no"> না<br>
+        <input type="radio" name="q11" value="yes"> হ্যাঁ<br><br>
+
+        <p>12. Firewall এর কাজ কী?</p>
+        <input type="radio" name="q12" value="block"> ক্ষতিকর ডেটা ব্লক<br>
+        <input type="radio" name="q12" value="none"> কাজ নেই<br><br>
+
+        <p>13. Keylogger কী?</p>
+        <input type="radio" name="q13" value="record"> কীবোর্ড টাইপ রেকর্ড করা<br>
+        <input type="radio" name="q13" value="game"> গেম খেলা<br><br>
+
+        <p>14. Password manager কেন ব্যবহার করবেন?</p>
+        <input type="radio" name="q14" value="safe"> নিরাপদে password রাখা<br>
+        <input type="radio" name="q14" value="useless"> অপ্রয়োজনীয়<br><br>
+
+        <p>15. HTTPS ওয়েবসাইট কেন ভালো?</p>
+        <input type="radio" name="q15" value="secure"> এনক্রিপ্টেড যোগাযোগ<br>
+        <input type="radio" name="q15" value="same"> HTTP এর মতোই<br><br>
+
+        <p>16. পাবলিক কম্পিউটারে login করার পর কী করবেন?</p>
+        <input type="radio" name="q16" value="logout"> Logout করব<br>
+        <input type="radio" name="q16" value="stay"> Logout করব না<br><br>
+
+        <p>17. USB থেকে ভাইরাস আসতে পারে?</p>
+        <input type="radio" name="q17" value="yes"> হ্যাঁ<br>
+        <input type="radio" name="q17" value="no"> না<br><br>
+
+        <p>18. Strong password কত character এর হওয়া ভালো?</p>
+        <input type="radio" name="q18" value="8plus"> 8 বা তার বেশি<br>
+        <input type="radio" name="q18" value="3"> 3 character<br><br>
+
+        <p>19. Fake job offer ইমেইল কী ধরনের আক্রমণ?</p>
+        <input type="radio" name="q19" value="phishing"> Phishing<br>
+        <input type="radio" name="q19" value="real"> আসল অফার<br><br>
+
+        <p>20. Back up কেন দরকার?</p>
+        <input type="radio" name="q20" value="restore"> তথ্য হারালে পুনরুদ্ধার<br>
+        <input type="radio" name="q20" value="useless"> দরকার নেই<br><br>
+
+        <p>21. Social media তে 2FA চালু করলে কী হয়?</p>
+        <input type="radio" name="q21" value="safe"> এক্সট্রা সিকিউরিটি<br>
+        <input type="radio" name="q21" value="nothing"> কিছুই হয় না<br><br>
+
+        <p>22. Malware কী?</p>
+        <input type="radio" name="q22" value="bad"> ক্ষতিকর সফটওয়্যার<br>
+        <input type="radio" name="q22" value="good"> ভালো প্রোগ্রাম<br><br>
+
+        <p>23. Incognito mode কী করে?</p>
+        <input type="radio" name="q23" value="noHistory"> ব্রাউজিং হিস্ট্রি সংরক্ষণ করে না<br>
+        <input type="radio" name="q23" value="same"> সাধারণ মোডের মতোই<br><br>
+
+        <p>24. SMS এ আসা verification code কাকে দেবেন?</p>
+        <input type="radio" name="q24" value="no"> কাউকে না<br>
+        <input type="radio" name="q24" value="yes"> সবার সাথে শেয়ার করব<br><br>
+
+        <p>25. Cyberbullying দেখলে কী করবেন?</p>
+        <input type="radio" name="q25" value="report"> রিপোর্ট করব<br>
+        <input type="radio" name="q25" value="ignore"> কিছু করব না<br><br>
 
         <button type="button" onclick="checkQuiz()">Submit</button>
       </form>
@@ -61,13 +163,36 @@
     <p>অনলাইন কোর্স: <a href="https://www.coursera.org" target="_blank">Coursera</a></p>
   </section>
 
+  <footer>
+    <p>© 2025 CyberSafe BD | Developed by You</p>
+  </footer>
+
   <script>
     function checkQuiz() {
       let score = 0;
       let form = document.getElementById("quizForm");
-      if (form.q1 && form.q1.value === "no") score++;
-      if (form.q2 && form.q2.value === "ignore") score++;
-      document.getElementById("result").innerText = "আপনার স্কোর: " + score + "/2";
+
+      // সঠিক উত্তরগুলোর লিস্ট
+      let answers = {
+        q1: "no", q2: "ignore", q3: "secure", q4: "extra", q5: "no",
+        q6: "virus", q7: "fake", q8: "fix", q9: "no", q10: "risk",
+        q11: "no", q12: "block", q13: "record", q14: "safe", q15: "secure",
+        q16: "logout", q17: "yes", q18: "8plus", q19: "phishing", q20: "restore",
+        q21: "safe", q22: "bad", q23: "noHistory", q24: "no", q25: "report"
+      };
+
+      for (let q in answers) {
+        let radios = form[q];
+        if (radios) {
+          for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked && radios[i].value === answers[q]) {
+              score++;
+            }
+          }
+        }
+      }
+
+      document.getElementById("result").innerText = "আপনার স্কোর: " + score + "/25";
     }
   </script>
 </body>
