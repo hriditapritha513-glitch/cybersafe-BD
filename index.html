@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -16,8 +17,8 @@
     button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
     button:hover { background: #2ecc71; }
     footer { background: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    .correct { color: green; font-weight: bold; }
-    .wrong { color: red; font-weight: bold; }
+    .correct { color: green; font-weight: bold; margin-left: 5px; }
+    .incorrect { color: red; font-weight: bold; margin-left: 5px; }
   </style>
 </head>
 <body>
@@ -35,7 +36,7 @@
   <!-- Language Switch -->
   <section>
     <p>
-      <a href="#" onclick="showBangla()">বাংলা</a> | 
+      <a href="#" onclick="showBangla()">বাংলা</a> |
       <a href="#" onclick="showEnglish()">English</a>
     </p>
   </section>
@@ -45,10 +46,10 @@
     <section id="tips">
       <h2>Online Safety Tips</h2>
       <ul>
-        <li>strong passwords (letters + numbers + symbols) ব্যবহার করুন।</li>
-        <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
-        <li>Two-step verification (2FA) চালু করুন।</li>
-        <li>সামাজিক মাধ্যমে কম ব্যক্তিগত তথ্য শেয়ার করুন।</li>
+        <li>শক্তিশালী পাসওয়ার্ড ব্যবহার করুন (অক্ষর + সংখ্যা + প্রতীক)।</li>
+        <li>অজানা লিঙ্কে কখনো ক্লিক করবেন না।</li>
+        <li>টু-ফ্যাক্টর অথেনটিকেশন (2FA) চালু করুন।</li>
+        <li>সোশ্যাল মিডিয়ায় কম ব্যক্তিগত তথ্য শেয়ার করুন।</li>
       </ul>
     </section>
 
@@ -56,107 +57,132 @@
       <h2>Quiz (25 questions)</h2>
       <div class="quiz">
         <form id="quizFormBN">
-
-<p>1. Is it safe to use a password using only a name</p>
-<input type="radio" name="q1" value="no"> না<br>
-<input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
-
-<p>2. What to do if you get a suspicious link in an unknown email</p>
-<input type="radio" name="q2" value="ignore"> উপেক্ষা করব<br>
-<input type="radio" name="q2" value="click"> ক্লিক করব<br><br>
-
-<p>3. What is the full form of 2FA?</p>
-<input type="radio" name="q3" value="two"> Two-Factor Authentication<br>
-<input type="radio" name="q3" value="wrong"> Two Fast Action<br><br>
-
-<p>4. ফেসবুক অ্যাকাউন্টে পাসওয়ার্ড অন্যকে দেওয়া উচিত?</p>
-<input type="radio" name="q4" value="no"> না<br>
-<input type="radio" name="q4" value="yes"> হ্যাঁ<br><br>
-
-<p>5. পাবলিক ওয়াই-ফাই ব্যবহার করলে কোন ঝুঁকি থাকতে পারে?</p>
-<input type="radio" name="q5" value="hack"> হ্যাক হতে পারে<br>
-<input type="radio" name="q5" value="safe"> কোন ঝুঁকি নেই<br><br>
-
-<p>6. কিসের মাধ্যমে ভাইরাস কম্পিউটারে ঢুকতে পারে?</p>
-<input type="radio" name="q6" value="usb"> অচেনা ইউএসবি<br>
-<input type="radio" name="q6" value="safe"> কেবল চার্জার<br><br>
-
-<p>7. কোনটা নিরাপদ পাসওয়ার্ড?</p>
-<input type="radio" name="q7" value="weak"> 123456<br>
-<input type="radio" name="q7" value="strong"> Abc@2025<br><br>
-
-<p>8. ফিশিং কী?</p>
-<input type="radio" name="q8" value="scam"> প্রতারণামূলক লিঙ্ক<br>
-<input type="radio" name="q8" value="fish"> মাছ ধরা<br><br>
-
-<p>9. HTTPS এর ‘S’ কী বোঝায়?</p>
-<input type="radio" name="q9" value="secure"> Secure<br>
-<input type="radio" name="q9" value="simple"> Simple<br><br>
-
-<p>10. শক্তিশালী পাসওয়ার্ড কত দিনে পরিবর্তন করা উচিত?</p>
-<input type="radio" name="q10" value="often"> নিয়মিত<br>
-<input type="radio" name="q10" value="never"> কখনো না<br><br>
-
-<p>11. VPN এর কাজ কী?</p>
-<input type="radio" name="q11" value="protect"> গোপনীয়তা রক্ষা<br>
-<input type="radio" name="q11" value="speed"> ইন্টারনেট দ্রুত করা<br><br>
-
-<p>12. Social engineering কী?</p>
-<input type="radio" name="q12" value="trick"> প্রতারণা করে তথ্য নেওয়া<br>
-<input type="radio" name="q12" value="wrong"> নতুন ইঞ্জিনিয়ারিং<br><br>
-
-<p>13. Firewall কী কাজে লাগে?</p>
-<input type="radio" name="q13" value="block"> ক্ষতিকর ট্রাফিক বন্ধ করা<br>
-<input type="radio" name="q13" value="cook"> রান্না করা<br><br>
-
-<p>14. OTP কী?</p>
-<input type="radio" name="q14" value="onetime"> One-Time Password<br>
-<input type="radio" name="q14" value="wrong"> Online Transfer Page<br><br>
-
-<p>15. অচেনা অ্যাপ ইনস্টল করা কি নিরাপদ?</p>
-<input type="radio" name="q15" value="no"> না<br>
-<input type="radio" name="q15" value="yes"> হ্যাঁ<br><br>
-
-<p>16. Ransomware কী?</p>
-<input type="radio" name="q16" value="malware"> তথ্য আটকে টাকা চাওয়া<br>
-<input type="radio" name="q16" value="wrong"> অনলাইন শপ<br><br>
-
-<p>17. Antivirus এর কাজ কী?</p>
-<input type="radio" name="q17" value="protect"> ভাইরাস শনাক্ত ও রক্ষা<br>
-<input type="radio" name="q17" value="wrong"> চার্জ দেওয়া<br><br>
-
-<p>18. Strong password এ কী থাকা উচিত?</p>
-<input type="radio" name="q18" value="mix"> অক্ষর+সংখ্যা+চিহ্ন<br>
-<input type="radio" name="q18" value="weak"> শুধু নাম<br><br>
-
-<p>19. পাসওয়ার্ড কোথায় লিখে রাখা উচিত নয়?</p>
-<input type="radio" name="q19" value="paper"> কাগজে প্রকাশ্যে<br>
-<input type="radio" name="q19" value="safe"> মেমোরিতে রাখা<br><br>
-
-<p>20. Spam ইমেইল কেমন?</p>
-<input type="radio" name="q20" value="junk"> অপ্রয়োজনীয় ইমেইল<br>
-<input type="radio" name="q20" value="safe"> দরকারি অফিস ইমেইল<br><br>
-
-<p>21. Browser update করা কেন দরকার?</p>
-<input type="radio" name="q21" value="security"> নিরাপত্তা বাড়ায়<br>
-<input type="radio" name="q21" value="style"> শুধু ডিজাইন পাল্টায়<br><br>
-
-<p>22. Data encryption কী?</p>
-<input type="radio" name="q22" value="secure"> তথ্য সুরক্ষিত কোডে রূপান্তর<br>
-<input type="radio" name="q22" value="wrong"> তথ্য ডিলিট করা<br><br>
-
-<p>23. Cyberbullying কী?</p>
-<input type="radio" name="q23" value="harass"> অনলাইনে হেনস্থা<br>
-<input type="radio" name="q23" value="fun"> মজা করা<br><br>
-
-<p>24. Malware কী?</p>
-<input type="radio" name="q24" value="virus"> ক্ষতিকর সফটওয়্যার<br>
-<input type="radio" name="q24" value="app"> দরকারি অ্যাপ<br><br>
-
-<p>25. Cyber hygiene বলতে কী বোঝায়?</p>
-<input type="radio" name="q25" value="practice"> নিয়মিত নিরাপত্তা অভ্যাস<br>
-<input type="radio" name="q25" value="wash"> কম্পিউটার ধোয়া<br><br>
-
+          <!-- বাংলা ২৫টা প্রশ্ন -->
+          <p>1. নাম দিয়েই শুধু পাসওয়ার্ড তৈরি করা কি নিরাপদ?<br>
+            <input type="radio" name="q1" value="no"> না
+            <input type="radio" name="q1" value="yes"> হ্যাঁ
+            <span id="feedbackBNq1"></span>
+          </p>
+          <p>2. অচেনা ইমেইলে সন্দেহজনক লিঙ্ক পেলে কী করব?<br>
+            <input type="radio" name="q2" value="ignore"> উপেক্ষা করব
+            <input type="radio" name="q2" value="click"> ক্লিক করব
+            <span id="feedbackBNq2"></span>
+          </p>
+          <p>3. 2FA এর পূর্ণরূপ কী?<br>
+            <input type="radio" name="q3" value="two"> Two-Factor Authentication
+            <input type="radio" name="q3" value="wrong"> Two Fast Action
+            <span id="feedbackBNq3"></span>
+          </p>
+          <p>4. ফেসবুক পাসওয়ার্ড অন্যকে দেওয়া উচিত?<br>
+            <input type="radio" name="q4" value="no"> না
+            <input type="radio" name="q4" value="yes"> হ্যাঁ
+            <span id="feedbackBNq4"></span>
+          </p>
+          <p>5. পাবলিক ওয়াই-ফাই ব্যবহার করলে কোন ঝুঁকি থাকতে পারে?<br>
+            <input type="radio" name="q5" value="hack"> হ্যাক হতে পারে
+            <input type="radio" name="q5" value="safe"> কোন ঝুঁকি নেই
+            <span id="feedbackBNq5"></span>
+          </p>
+          <p>6. কিসের মাধ্যমে ভাইরাস ঢুকতে পারে?<br>
+            <input type="radio" name="q6" value="usb"> অচেনা ইউএসবি
+            <input type="radio" name="q6" value="safe"> কেবল চার্জার
+            <span id="feedbackBNq6"></span>
+          </p>
+          <p>7. কোনটা নিরাপদ পাসওয়ার্ড?<br>
+            <input type="radio" name="q7" value="weak"> 123456
+            <input type="radio" name="q7" value="strong"> Abc@2025
+            <span id="feedbackBNq7"></span>
+          </p>
+          <p>8. ফিশিং কী?<br>
+            <input type="radio" name="q8" value="scam"> প্রতারণামূলক লিঙ্ক
+            <input type="radio" name="q8" value="fish"> মাছ ধরা
+            <span id="feedbackBNq8"></span>
+          </p>
+          <p>9. HTTPS এর ‘S’ কী বোঝায়?<br>
+            <input type="radio" name="q9" value="secure"> Secure
+            <input type="radio" name="q9" value="simple"> Simple
+            <span id="feedbackBNq9"></span>
+          </p>
+          <p>10. শক্তিশালী পাসওয়ার্ড কত দিনে পরিবর্তন করা উচিত?<br>
+            <input type="radio" name="q10" value="often"> নিয়মিত
+            <input type="radio" name="q10" value="never"> কখনো না
+            <span id="feedbackBNq10"></span>
+          </p>
+          <p>11. VPN এর কাজ কী?<br>
+            <input type="radio" name="q11" value="protect"> গোপনীয়তা রক্ষা
+            <input type="radio" name="q11" value="speed"> ইন্টারনেট দ্রুত করা
+            <span id="feedbackBNq11"></span>
+          </p>
+          <p>12. Social engineering কী?<br>
+            <input type="radio" name="q12" value="trick"> প্রতারণা করে তথ্য নেওয়া
+            <input type="radio" name="q12" value="wrong"> নতুন ইঞ্জিনিয়ারিং
+            <span id="feedbackBNq12"></span>
+          </p>
+          <p>13. Firewall এর কাজ?<br>
+            <input type="radio" name="q13" value="block"> ক্ষতিকর ট্রাফিক বন্ধ করা
+            <input type="radio" name="q13" value="cook"> রান্না করা
+            <span id="feedbackBNq13"></span>
+          </p>
+          <p>14. OTP কী?<br>
+            <input type="radio" name="q14" value="onetime"> One-Time Password
+            <input type="radio" name="q14" value="wrong"> Online Transfer Page
+            <span id="feedbackBNq14"></span>
+          </p>
+          <p>15. অচেনা অ্যাপ ইনস্টল করা নিরাপদ?<br>
+            <input type="radio" name="q15" value="no"> না
+            <input type="radio" name="q15" value="yes"> হ্যাঁ
+            <span id="feedbackBNq15"></span>
+          </p>
+          <p>16. Ransomware কী?<br>
+            <input type="radio" name="q16" value="malware"> তথ্য আটকে টাকা চাওয়া
+            <input type="radio" name="q16" value="wrong"> অনলাইন শপ
+            <span id="feedbackBNq16"></span>
+          </p>
+          <p>17. Antivirus এর কাজ কী?<br>
+            <input type="radio" name="q17" value="protect"> ভাইরাস শনাক্ত ও রক্ষা
+            <input type="radio" name="q17" value="wrong"> চার্জ দেওয়া
+            <span id="feedbackBNq17"></span>
+          </p>
+          <p>18. Strong password এ কী থাকা উচিত?<br>
+            <input type="radio" name="q18" value="mix"> অক্ষর+সংখ্যা+চিহ্ন
+            <input type="radio" name="q18" value="weak"> শুধু নাম
+            <span id="feedbackBNq18"></span>
+          </p>
+          <p>19. পাসওয়ার্ড কোথায় লিখে রাখা উচিত নয়?<br>
+            <input type="radio" name="q19" value="paper"> কাগজে প্রকাশ্যে
+            <input type="radio" name="q19" value="safe"> মেমোরিতে রাখা
+            <span id="feedbackBNq19"></span>
+          </p>
+          <p>20. Spam ইমেইল কেমন?<br>
+            <input type="radio" name="q20" value="junk"> অপ্রয়োজনীয় ইমেইল
+            <input type="radio" name="q20" value="safe"> দরকারি অফিস ইমেইল
+            <span id="feedbackBNq20"></span>
+          </p>
+          <p>21. Browser update করা কেন দরকার?<br>
+            <input type="radio" name="q21" value="security"> নিরাপত্তা বাড়ায়
+            <input type="radio" name="q21" value="style"> শুধু ডিজাইন পাল্টায়
+            <span id="feedbackBNq21"></span>
+          </p>
+          <p>22. Data encryption কী?<br>
+            <input type="radio" name="q22" value="secure"> তথ্য সুরক্ষিত কোডে রূপান্তর
+            <input type="radio" name="q22" value="wrong"> তথ্য ডিলিট করা
+            <span id="feedbackBNq22"></span>
+          </p>
+          <p>23. Cyberbullying কী?<br>
+            <input type="radio" name="q23" value="harass"> অনলাইনে হেনস্থা
+            <input type="radio" name="q23" value="fun"> মজা করা
+            <span id="feedbackBNq23"></span>
+          </p>
+          <p>24. Malware কী?<br>
+            <input type="radio" name="q24" value="virus"> ক্ষতিকর সফটওয়্যার
+            <input type="radio" name="q24" value="app"> দরকারি অ্যাপ
+            <span id="feedbackBNq24"></span>
+          </p>
+          <p>25. Cyber hygiene বলতে কী বোঝায়?<br>
+            <input type="radio" name="q25" value="practice"> নিয়মিত নিরাপত্তা অভ্যাস
+            <input type="radio" name="q25" value="wash"> কম্পিউটার ধোয়া
+            <span id="feedbackBNq25"></span>
+          </p>
         </form>
         <button type="button" onclick="checkQuiz('BN')">Submit</button>
         <p id="resultBN"></p>
@@ -180,107 +206,133 @@
       <h2>Quiz (25 Questions)</h2>
       <div class="quiz">
         <form id="quizFormEN">
-
-<p>1. Is using only your name as a password safe?</p>
-<input type="radio" name="q1" value="no"> No<br>
-<input type="radio" name="q1" value="yes"> Yes<br><br>
-
-<p>2. What should you do if you get a suspicious link in email?</p>
-<input type="radio" name="q2" value="ignore"> Ignore<br>
-<input type="radio" name="q2" value="click"> Click<br><br>
-
-<p>3. What is the full form of 2FA?</p>
-<input type="radio" name="q3" value="two"> Two-Factor Authentication<br>
-<input type="radio" name="q3" value="wrong"> Two Fast Action<br><br>
-
-<p>4. Should you share your Facebook password with others?</p>
-<input type="radio" name="q4" value="no"> No<br>
-<input type="radio" name="q4" value="yes"> Yes<br><br>
-
-<p>5. What risk comes from public Wi-Fi?</p>
-<input type="radio" name="q5" value="hack"> Can be hacked<br>
-<input type="radio" name="q5" value="safe"> No risk<br><br>
-
-<p>6. How can a virus enter a computer?</p>
-<input type="radio" name="q6" value="usb"> Unknown USB<br>
-<input type="radio" name="q6" value="safe"> Only charger<br><br>
-
-<p>7. Which is a strong password?</p>
-<input type="radio" name="q7" value="weak"> 123456<br>
-<input type="radio" name="q7" value="strong"> Abc@2025<br><br>
-
-<p>8. What is phishing?</p>
-<input type="radio" name="q8" value="scam"> Fake link to scam<br>
-<input type="radio" name="q8" value="fish"> Catching fish<br><br>
-
-<p>9. What does the ‘S’ in HTTPS mean?</p>
-<input type="radio" name="q9" value="secure"> Secure<br>
-<input type="radio" name="q9" value="simple"> Simple<br><br>
-
-<p>10. How often should passwords be changed?</p>
-<input type="radio" name="q10" value="often"> Regularly<br>
-<input type="radio" name="q10" value="never"> Never<br><br>
-
-<p>11. What does a VPN do?</p>
-<input type="radio" name="q11" value="protect"> Protect privacy<br>
-<input type="radio" name="q11" value="speed"> Increase speed<br><br>
-
-<p>12. What is Social engineering?</p>
-<input type="radio" name="q12" value="trick"> Tricking to get info<br>
-<input type="radio" name="q12" value="wrong"> New engineering<br><br>
-
-<p>13. What does a Firewall do?</p>
-<input type="radio" name="q13" value="block"> Block harmful traffic<br>
-<input type="radio" name="q13" value="cook"> Cooking<br><br>
-
-<p>14. What is OTP?</p>
-<input type="radio" name="q14" value="onetime"> One-Time Password<br>
-<input type="radio" name="q14" value="wrong"> Online Transfer Page<br><br>
-
-<p>15. Is it safe to install unknown apps?</p>
-<input type="radio" name="q15" value="no"> No<br>
-<input type="radio" name="q15" value="yes"> Yes<br><br>
-
-<p>16. What is Ransomware?</p>
-<input type="radio" name="q16" value="malware"> Locks data, asks money<br>
-<input type="radio" name="q16" value="wrong"> Online shop<br><br>
-
-<p>17. What does Antivirus do?</p>
-<input type="radio" name="q17" value="protect"> Detect & protect<br>
-<input type="radio" name="q17" value="wrong"> Give charge<br><br>
-
-<p>18. What should a strong password contain?</p>
-<input type="radio" name="q18" value="mix"> Letters+Numbers+Symbols<br>
-<input type="radio" name="q18" value="weak"> Only name<br><br>
-
-<p>19. Where should you NOT write passwords?</p>
-<input type="radio" name="q19" value="paper"> On open paper<br>
-<input type="radio" name="q19" value="safe"> In memory<br><br>
-
-<p>20. What is Spam email?</p>
-<input type="radio" name="q20" value="junk"> Unwanted email<br>
-<input type="radio" name="q20" value="safe"> Office mail<br><br>
-
-<p>21. Why update browsers?</p>
-<input type="radio" name="q21" value="security"> Improves security<br>
-<input type="radio" name="q21" value="style"> Only design<br><br>
-
-<p>22. What is Data encryption?</p>
-<input type="radio" name="q22" value="secure"> Convert data to code<br>
-<input type="radio" name="q22" value="wrong"> Delete data<br><br>
-
-<p>23. What is Cyberbullying?</p>
-<input type="radio" name="q23" value="harass"> Online harassment<br>
-<input type="radio" name="q23" value="fun"> Just fun<br><br>
-
-<p>24. What is Malware?</p>
-<input type="radio" name="q24" value="virus"> Harmful software<br>
-<input type="radio" name="q24" value="app"> Useful app<br><br>
-
-<p>25. What is Cyber hygiene?</p>
-<input type="radio" name="q25" value="practice"> Regular safe habits<br>
-<input type="radio" name="q25" value="wash"> Washing computer<br><br>
-
+          <!-- English 25 Questions (same as Bangla but translated) -->
+          <p>1. Is using only your name as a password safe?<br>
+            <input type="radio" name="q1" value="no"> No
+            <input type="radio" name="q1" value="yes"> Yes
+            <span id="feedbackENq1"></span>
+          </p>
+          <p>2. What should you do if you get a suspicious link in email?<br>
+            <input type="radio" name="q2" value="ignore"> Ignore
+            <input type="radio" name="q2" value="click"> Click
+            <span id="feedbackENq2"></span>
+          </p>
+          <p>3. What is the full form of 2FA?<br>
+            <input type="radio" name="q3" value="two"> Two-Factor Authentication
+            <input type="radio" name="q3" value="wrong"> Two Fast Action
+            <span id="feedbackENq3"></span>
+          </p>
+          <p>4. Should you share your Facebook password with others?<br>
+            <input type="radio" name="q4" value="no"> No
+            <input type="radio" name="q4" value="yes"> Yes
+            <span id="feedbackENq4"></span>
+          </p>
+          <p>5. What risk comes from public Wi-Fi?<br>
+            <input type="radio" name="q5" value="hack"> Can be hacked
+            <input type="radio" name="q5" value="safe"> No risk
+            <span id="feedbackENq5"></span>
+          </p>
+          <p>6. How can a virus enter a computer?<br>
+            <input type="radio" name="q6" value="usb"> Unknown USB
+            <input type="radio" name="q6" value="safe"> Only charger
+            <span id="feedbackENq6"></span>
+          </p>
+          <p>7. Which is a strong password?<br>
+            <input type="radio" name="q7" value="weak"> 123456
+            <input type="radio" name="q7" value="strong"> Abc@2025
+            <span id="feedbackENq7"></span>
+          </p>
+          <p>8. What is phishing?<br>
+            <input type="radio" name="q8" value="scam"> Fake link to scam
+            <input type="radio" name="q8" value="fish"> Catching fish
+            <span id="feedbackENq8"></span>
+          </p>
+          <p>9. What does the ‘S’ in HTTPS mean?<br>
+            <input type="radio" name="q9" value="secure"> Secure
+            <input type="radio" name="q9" value="simple"> Simple
+            <span id="feedbackENq9"></span>
+          </p>
+          <p>10. How often should passwords be changed?<br>
+            <input type="radio" name="q10" value="often"> Regularly
+            <input type="radio" name="q10" value="never"> Never
+            <span id="feedbackENq10"></span>
+          </p>
+          <p>11. What does a VPN do?<br>
+            <input type="radio" name="q11" value="protect"> Protect privacy
+            <input type="radio" name="q11" value="speed"> Increase speed
+            <span id="feedbackENq11"></span>
+          </p>
+          <p>12. What is Social engineering?<br>
+            <input type="radio" name="q12" value="trick"> Tricking to get info
+            <input type="radio" name="q12" value="wrong"> New engineering
+            <span id="feedbackENq12"></span>
+          </p>
+          <p>13. What does a Firewall do?<br>
+            <input type="radio" name="q13" value="block"> Block harmful traffic
+            <input type="radio" name="q13" value="cook"> Cooking
+            <span id="feedbackENq13"></span>
+          </p>
+          <p>14. What is OTP?<br>
+            <input type="radio" name="q14" value="onetime"> One-Time Password
+            <input type="radio" name="q14" value="wrong"> Online Transfer Page
+            <span id="feedbackENq14"></span>
+          </p>
+          <p>15. Is it safe to install unknown apps?<br>
+            <input type="radio" name="q15" value="no"> No
+            <input type="radio" name="q15" value="yes"> Yes
+            <span id="feedbackENq15"></span>
+          </p>
+          <p>16. What is Ransomware?<br>
+            <input type="radio" name="q16" value="malware"> Locks data, asks money
+            <input type="radio" name="q16" value="wrong"> Online shop
+            <span id="feedbackENq16"></span>
+          </p>
+          <p>17. What does Antivirus do?<br>
+            <input type="radio" name="q17" value="protect"> Detect & protect<p>17. What does Antivirus do?<br>
+            <input type="radio" name="q17" value="protect"> Detect & protect
+            <input type="radio" name="q17" value="wrong"> Charging device
+            <span id="feedbackENq17"></span>
+          </p>
+          <p>18. What should a strong password include?<br>
+            <input type="radio" name="q18" value="mix"> Letters+Numbers+Symbols
+            <input type="radio" name="q18" value="weak"> Only name
+            <span id="feedbackENq18"></span>
+          </p>
+          <p>19. Where should you NOT write your password?<br>
+            <input type="radio" name="q19" value="paper"> On paper openly
+            <input type="radio" name="q19" value="safe"> Remember it
+            <span id="feedbackENq19"></span>
+          </p>
+          <p>20. What is spam email?<br>
+            <input type="radio" name="q20" value="junk"> Unwanted email
+            <input type="radio" name="q20" value="safe"> Office email
+            <span id="feedbackENq20"></span>
+          </p>
+          <p>21. Why update browsers?<br>
+            <input type="radio" name="q21" value="security"> Improves security
+            <input type="radio" name="q21" value="style"> Only changes style
+            <span id="feedbackENq21"></span>
+          </p>
+          <p>22. What is Data encryption?<br>
+            <input type="radio" name="q22" value="secure"> Convert data to secure code
+            <input type="radio" name="q22" value="wrong"> Delete data
+            <span id="feedbackENq22"></span>
+          </p>
+          <p>23. What is Cyberbullying?<br>
+            <input type="radio" name="q23" value="harass"> Online harassment
+            <input type="radio" name="q23" value="fun"> Just fun
+            <span id="feedbackENq23"></span>
+          </p>
+          <p>24. What is Malware?<br>
+            <input type="radio" name="q24" value="virus"> Harmful software
+            <input type="radio" name="q24" value="app"> Useful app
+            <span id="feedbackENq24"></span>
+          </p>
+          <p>25. What is Cyber hygiene?<br>
+            <input type="radio" name="q25" value="practice"> Regular safe practices
+            <input type="radio" name="q25" value="wash"> Washing computer
+            <span id="feedbackENq25"></span>
+          </p>
         </form>
         <button type="button" onclick="checkQuiz('EN')">Submit</button>
         <p id="resultEN"></p>
@@ -289,55 +341,54 @@
   </div>
 
   <footer>
-    <p>© 2025 CyberSafe BD | Learn and Stay Safe Online</p>
+    <p>© 2025 CyberSafe BD</p>
   </footer>
 
   <script>
-    function showBangla() {
-      document.getElementById("bangla").style.display = "block";
-      document.getElementById("english").style.display = "none";
-    }
-    function showEnglish() {
-      document.getElementById("bangla").style.display = "none";
-      document.getElementById("english").style.display = "block";
-    }
+    // Right answers (same for BN and EN)
+    const answers = {
+      q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
+      q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
+      q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
+      q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
+      q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
+    };
 
-    function checkQuiz(lang) {
-      let form = document.getElementById("quizForm" + lang);
-      let result = document.getElementById("result" + lang);
-      let correct = {
-        q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
-        q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
-        q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
-        q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
-        q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
-      };
+    function checkQuiz(lang){
+      let form = document.getElementById(lang === "BN" ? "quizFormBN" : "quizFormEN");
+      let result = 0;
 
-      let score = 0;
-      let feedback = "";
+      for(let i=1; i<=25; i++){
+        let q = "q"+i;
+        let selected = form.querySelector("input[name='"+q+"']:checked");
+        let feedback = document.getElementById("feedback"+lang+q);
 
-      for (let q in correct) {
-        let radios = form[q];
-        let answered = false;
-        if (radios) {
-          for (let i = 0; i < radios.length; i++) {
-            ifif (radios[i].checked) {
-              answered = true;
-              if (radios[i].value === correct[q]) {
-                score++;
-                feedback += `<p class="correct">✅ Q${q.replace("q","")} Correct</p>`;
-              } else {
-                feedback += `<p class="wrong">❌ Q${q.replace("q","")} Wrong</p>`;
-              }
-            }
+        if(selected){
+          if(selected.value === answers[q]){
+            result++;
+            feedback.textContent = " ✅";
+            feedback.className = "correct";
+          } else {
+            feedback.textContent = " ❌";
+            feedback.className = "incorrect";
           }
-        }
-        if (!answered) {
-          feedback += `<p class="wrong">⚠️ Q${q.replace("q","")} Not answered</p>`;
+        } else {
+          feedback.textContent = " ❌";
+          feedback.className = "incorrect";
         }
       }
 
-      result.innerHTML = `You got <b>${score}</b> out of 25.<br>` + feedback;
+      document.getElementById("result"+lang).textContent = 
+        "Your Score: "+result+"/25";
+    }
+
+    function showBangla(){
+      document.getElementById("bangla").style.display = "block";
+      document.getElementById("english").style.display = "none";
+    }
+    function showEnglish(){
+      document.getElementById("bangla").style.display = "none";
+      document.getElementById("english").style.display = "block";
     }
   </script>
 </body>
