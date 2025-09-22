@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Before Quiz - CyberSafe BD</title>
+</head>
+<body>
+  <h1>CyberSafe BD - Before Quiz</h1>
+  <form id="beforeQuiz">
+    <p>1. কোনটা সবচেয়ে নিরাপদ পাসওয়ার্ড?</p>
+    <input type="radio" name="q1" value="a"> 123456<br>
+    <input type="radio" name="q1" value="b"> Abc@2024<br>
+    <input type="radio" name="q1" value="c"> password<br>
+
+    <p>2. ফিশিং লিঙ্ক কিভাবে চিনবে?</p>
+    <input type="radio" name="q2" value="a"> লিঙ্কে বানান ভুল<br>
+    <input type="radio" name="q2" value="b"> খুব trusted site<br>
+    <input type="radio" name="q2" value="c"> সব লিঙ্কই নিরাপদ<br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    document.getElementById("beforeQuiz").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      // উত্তর চেক করা
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "a") score++;
+
+      // লোকাল স্টোরেজে সেভ
+      localStorage.setItem("beforeScore", score);
+
+      document.getElementById("message").innerText = 
+        "তোমার স্কোর: " + score + "/2 ✅ (Data saved)";
+    });
+  </script>
+</body>
+</html>
