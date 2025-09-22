@@ -16,137 +16,306 @@
     nav a:hover { text-decoration: underline; }
     section { padding: 20px; }
     .quiz { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-    button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+    button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
     button:hover { background: #2ecc71; }
     footer { background: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    #langBtn { background: #e67e22; }
-    #langBtn:hover { background: #d35400; }
   </style>
 </head>
 <body>
   <header>
-    <h1 id="title">CyberSafe BD</h1>
-    <p id="subtitle">বাংলায় সহজ সাইবার নিরাপত্তা শেখার প্ল্যাটফর্ম</p>
-    <button id="langBtn" onclick="toggleLang()">Switch to English</button>
+    <h1>CyberSafe BD</h1>
+    <p>বাংলা ও ইংরেজিতে সহজ সাইবার নিরাপত্তা শেখার প্ল্যাটফর্ম</p>
   </header>
 
   <nav>
-    <a href="index.html" id="navHome">হোম</a>
-    <a href="about.html" id="navAbout">আমাদের সম্পর্কে</a>
-    <a href="contact.html" id="navContact">যোগাযোগ</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
-  <section id="tips">
-    <h2 id="tipsTitle">অনলাইন নিরাপত্তার টিপস</h2>
-    <ul id="tipsList">
-      <li>শক্তিশালী password ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
-      <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
-      <li>দুই ধাপ যাচাইকরণ (2FA) চালু করুন।</li>
-      <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
-    </ul>
-  </section>
-
-  <section id="quiz">
-    <h2 id="quizTitle">কুইজ</h2>
-    <div class="quiz">
-      <form id="quizForm">
-        <p id="q1">1. Password এ কেবল নাম ও জন্মতারিখ ব্যবহার করা কি নিরাপদ?</p>
-        <input type="radio" name="q1" value="no"> <span id="q1a">না</span><br>
-        <input type="radio" name="q1" value="yes"> <span id="q1b">হ্যাঁ</span><br><br>
-
-        <p id="q2">2. অচেনা ইমেইলে suspicious লিঙ্ক এলে কী করবেন?</p>
-        <input type="radio" name="q2" value="ignore"> <span id="q2a">উপেক্ষা করব</span><br>
-        <input type="radio" name="q2" value="click"> <span id="q2b">ক্লিক করব</span><br><br>
-
-        <button type="button" onclick="checkQuiz()" id="submitBtn">জমা দিন</button>
-      </form>
-      <p id="result"></p>
-    </div>
-  </section>
-
-  <section id="resources">
-    <h2 id="resTitle">রিসোর্স</h2>
-    <p id="res1">সাহায্যের জন্য: 
-      <a href="https://www.police.gov.bd/" target="_blank">বাংলাদেশ পুলিশ</a>
+  <!-- Language Switch -->
+  <section>
+    <p>
+      <a href="#" onclick="showBangla()">বাংলা</a> | 
+      <a href="#" onclick="showEnglish()">English</a>
     </p>
-    <p id="res2">অনলাইন কোর্স: <a href="https://www.coursera.org" target="_blank">Coursera</a></p>
   </section>
+
+  <!-- Bangla Content -->
+  <div id="bangla">
+    <section id="tips">
+      <h2>অনলাইন নিরাপত্তার টিপস</h2>
+      <ul>
+        <li>শক্তিশালী পাসওয়ার্ড ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
+        <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
+        <li>দুই ধাপ যাচাইকরণ (2FA) চালু করুন।</li>
+        <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
+      </ul>
+    </section>
+
+    <section id="quiz">
+      <h2>কুইজ (২৫ প্রশ্ন)</h2>
+      <div class="quiz">
+        <form id="quizFormBN">
+
+          <p>1. শুধুমাত্র নাম ব্যবহার করে password রাখা কি নিরাপদ?</p>
+          <input type="radio" name="q1" value="no"> না<br>
+          <input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
+
+          <p>2. অচেনা ইমেইলে suspicious লিঙ্ক এলে কী করবেন?</p>
+          <input type="radio" name="q2" value="ignore"> উপেক্ষা করব<br>
+          <input type="radio" name="q2" value="click"> ক্লিক করব<br><br>
+
+          <p>3. 2FA এর পূর্ণরূপ কী?</p>
+          <input type="radio" name="q3" value="two"> Two-Factor Authentication<br>
+          <input type="radio" name="q3" value="wrong"> Two Fast Action<br><br>
+
+          <p>4. ফেসবুক অ্যাকাউন্টে পাসওয়ার্ড অন্যকে দেওয়া উচিত?</p>
+          <input type="radio" name="q4" value="no"> না<br>
+          <input type="radio" name="q4" value="yes"> হ্যাঁ<br><br>
+
+          <p>5. পাবলিক ওয়াই-ফাই ব্যবহার করলে কোন ঝুঁকি থাকতে পারে?</p>
+          <input type="radio" name="q5" value="hack"> হ্যাক হতে পারে<br>
+          <input type="radio" name="q5" value="safe"> কোন ঝুঁকি নেই<br><br>
+
+          <p>6. কিসের মাধ্যমে ভাইরাস কম্পিউটারে ঢুকতে পারে?</p>
+          <input type="radio" name="q6" value="usb"> অচেনা ইউএসবি<br>
+          <input type="radio" name="q6" value="safe"> কেবল চার্জার<br><br>
+
+          <p>7. কোনটা নিরাপদ পাসওয়ার্ড?</p>
+          <input type="radio" name="q7" value="weak"> 123456<br>
+          <input type="radio" name="q7" value="strong"> Abc@2025<br><br>
+
+          <p>8. ফিশিং কী?</p>
+          <input type="radio" name="q8" value="scam"> প্রতারণামূলক লিঙ্ক<br>
+          <input type="radio" name="q8" value="fish"> মাছ ধরা<br><br>
+
+          <p>9. HTTPS এর ‘S’ কী বোঝায়?</p>
+          <input type="radio" name="q9" value="secure"> Secure<br>
+          <input type="radio" name="q9" value="simple"> Simple<br><br>
+
+          <p>10. শক্তিশালী পাসওয়ার্ড কত দিনে পরিবর্তন করা উচিত?</p>
+          <input type="radio" name="q10" value="often"> নিয়মিত<br>
+          <input type="radio" name="q10" value="never"> কখনো না<br><br>
+
+          <p>11. VPN এর কাজ কী?</p>
+          <input type="radio" name="q11" value="protect"> গোপনীয়তা রক্ষা<br>
+          <input type="radio" name="q11" value="speed"> ইন্টারনেট দ্রুত করা<br><br>
+
+          <p>12. Social engineering কী?</p>
+          <input type="radio" name="q12" value="trick"> প্রতারণা করে তথ্য নেওয়া<br>
+          <input type="radio" name="q12" value="wrong"> নতুন ইঞ্জিনিয়ারিং<br><br>
+
+          <p>13. Firewall কী কাজে লাগে?</p>
+          <input type="radio" name="q13" value="block"> ক্ষতিকর ট্রাফিক বন্ধ করা<br>
+          <input type="radio" name="q13" value="cook"> রান্না করা<br><br>
+
+          <p>14. OTP কী?</p>
+          <input type="radio" name="q14" value="onetime"> One-Time Password<br>
+          <input type="radio" name="q14" value="wrong"> Online Transfer Page<br><br>
+
+          <p>15. অচেনা অ্যাপ ইনস্টল করা কি নিরাপদ?</p>
+          <input type="radio" name="q15" value="no"> না<br>
+          <input type="radio" name="q15" value="yes"> হ্যাঁ<br><br>
+
+          <p>16. Ransomware কী?</p>
+          <input type="radio" name="q16" value="malware"> তথ্য আটকে টাকা চাওয়া<br>
+          <input type="radio" name="q16" value="wrong"> অনলাইন শপ<br><br>
+
+          <p>17. Antivirus এর কাজ কী?</p>
+          <input type="radio" name="q17" value="protect"> ভাইরাস শনাক্ত ও রক্ষা<br>
+          <input type="radio" name="q17" value="wrong"> চার্জ দেওয়া<br><br>
+
+          <p>18. Strong password এ কী থাকা উচিত?</p>
+          <input type="radio" name="q18" value="mix"> অক্ষর+সংখ্যা+চিহ্ন<br>
+          <input type="radio" name="q18" value="weak"> শুধু নাম<br><br>
+
+          <p>19. পাসওয়ার্ড কোথায় লিখে রাখা উচিত নয়?</p>
+          <input type="radio" name="q19" value="paper"> কাগজে প্রকাশ্যে<br>
+          <input type="radio" name="q19" value="safe"> মেমোরিতে রাখা<br><br>
+
+          <p>20. Spam ইমেইল কেমন?</p>
+          <input type="radio" name="q20" value="junk"> অপ্রয়োজনীয় ইমেইল<br>
+          <input type="radio" name="q20" value="safe"> দরকারি অফিস ইমেইল<br><br>
+
+          <p>21. Browser update করা কেন দরকার?</p>
+          <input type="radio" name="q21" value="security"> নিরাপত্তা বাড়ায়<br>
+          <input type="radio" name="q21" value="style"> শুধু ডিজাইন পাল্টায়<br><br>
+
+          <p>22. Data encryption কী?</p>
+          <input type="radio" name="q22" value="secure"> তথ্য সুরক্ষিত কোডে রূপান্তর<br>
+          <input type="radio" name="q22" value="wrong"> তথ্য ডিলিট করা<br><br>
+
+          <p>23. Cyberbullying কী?</p>
+          <input type="radio" name="q23" value="harass"> অনলাইনে হেনস্থা<br>
+          <input type="radio" name="q23" value="fun"> মজা করা<br><br>
+
+          <p>24. Malware কী?</p>
+          <input type="radio" name="q24" value="virus"> ক্ষতিকর সফটওয়্যার<br>
+          <input type="radio" name="q24" value="app"> দরকারি অ্যাপ<br><br>
+
+          <p>25. Cyber hygiene বলতে কী বোঝায়?</p>
+          <input type="radio" name="q25" value="practice"> নিয়মিত নিরাপত্তা অভ্যাস<br>
+          <input type="radio" name="q25" value="wash"> কম্পিউটার ধোয়া<br><br>
+
+        </form>
+        <button type="button" onclick="checkQuiz('BN')">Submit</button>
+        <p id="resultBN"></p>
+      </div>
+    </section>
+  </div><!-- English Content -->
+  <div id="english" style="display:none;">
+    <section id="tipsEN">
+      <h2>Online Safety Tips</h2>
+      <ul>
+        <li>Use strong passwords (letters + numbers + symbols).</li>
+        <li>Never click on unknown links.</li>
+        <li>Enable Two-Factor Authentication (2FA).</li>
+        <li>Share less personal info on social media.</li>
+      </ul>
+    </section>
+
+    <section id="quizEN">
+      <h2>Quiz (25 Questions)</h2>
+      <div class="quiz">
+        <form id="quizFormEN">
+
+          <p>1. Is using only your name as a password safe?</p>
+          <input type="radio" name="q1" value="no"> No<br>
+          <input type="radio" name="q1" value="yes"> Yes<br><br>
+
+          <p>2. What should you do if you get a suspicious link in email?</p>
+          <input type="radio" name="q2" value="ignore"> Ignore<br>
+          <input type="radio" name="q2" value="click"> Click<br><br>
+
+          <p>3. What is the full form of 2FA?</p>
+          <input type="radio" name="q3" value="two"> Two-Factor Authentication<br>
+          <input type="radio" name="q3" value="wrong"> Two Fast Action<br><br>
+
+          <p>4. Should you share your Facebook password with others?</p>
+          <input type="radio" name="q4" value="no"> No<br>
+          <input type="radio" name="q4" value="yes"> Yes<br><br>
+
+          <p>5. What risk comes from public Wi-Fi?</p>
+          <input type="radio" name="q5" value="hack"> Can be hacked<br>
+          <input type="radio" name="q5" value="safe"> No risk<br><br>
+
+          <p>6. How can a virus enter a computer?</p>
+          <input type="radio" name="q6" value="usb"> Unknown USB<br>
+          <input type="radio" name="q6" value="safe"> Only charger<br><br>
+
+          <p>7. Which is a strong password?</p>
+          <input type="radio" name="q7" value="weak"> 123456<br>
+          <input type="radio" name="q7" value="strong"> Abc@2025<br><br>
+
+          <p>8. What is phishing?</p>
+          <input type="radio" name="q8" value="scam"> Fake link to scam<br>
+          <input type="radio" name="q8" value="fish"> Catching fish<br><br>
+
+          <p>9. What does the ‘S’ in HTTPS mean?</p>
+          <input type="radio" name="q9" value="secure"> Secure<br>
+          <input type="radio" name="q9" value="simple"> Simple<br><br>
+
+          <p>10. How often should passwords be changed?</p>
+          <input type="radio" name="q10" value="often"> Regularly<br>
+          <input type="radio" name="q10" value="never"> Never<br><br>
+
+          <p>11. What does a VPN do?</p>
+          <input type="radio" name="q11" value="protect"> Protect privacy<br>
+          <input type="radio" name="q11" value="speed"> Increase speed<br><br>
+
+          <p>12. What is Social engineering?</p>
+          <input type="radio" name="q12" value="trick"> Tricking to get info<br>
+          <input type="radio" name="q12" value="wrong"> New engineering<br><br>
+
+          <p>13. What does a Firewall do?</p>
+          <input type="radio" name="q13" value="block"> Block harmful traffic<br>
+          <input type="radio" name="q13" value="cook"> Cooking<br><br>
+
+          <p>14. What is OTP?</p>
+          <input type="radio" name="q14" value="onetime"> One-Time Password<br>
+          <input type="radio" name="q14" value="wrong"> Online Transfer Page<br><br>
+
+          <p>15. Is it safe to install unknown apps?</p>
+          <input type="radio" name="q15" value="no"> No<br>
+          <input type="radio" name="q15" value="yes"> Yes<br><br>
+
+          <p>16. What is Ransomware?</p>
+          <input type="radio" name="q16" value="malware"> Locks data, asks money<br>
+          <input type="radio" name="q16" value="wrong"> Online shop<br><br>
+
+          <p>17. What does Antivirus do?</p>
+          <input type="radio" name="q17" value="protect"> Detect & protect<br>
+          <input type="radio" name="q17" value="wrong"> Give charge<br><br>
+
+          <p>18. What should a strong password contain?</p>
+          <input type="radio" name="q18" value="mix"> Letters+Numbers+Symbols<br>
+          <input type="radio" name="q18" value="weak"> Only name<br><br>
+
+          <p>19. Where should you NOT write passwords?</p>
+          <input type="radio" name="q19" value="paper"> On open paper<br>
+          <input type="radio" name="q19" value="safe"> In memory<br><br>
+
+          <p>20. What is Spam email?</p>
+          <input type="radio" name="q20" value="junk"> Unwanted email<br>
+          <input type="radio" name="q20" value="safe"> Office mail<br><br>
+
+          <p>21. Why update browsers?</p>
+          <input type="radio" name="q21" value="security"> Improves security<br>
+          <input type="radio" name="q21" value="style"> Only design<br><br>
+
+          <p>22. What is Data encryption?</p>
+          <input type="radio" name="q22" value="secure"> Convert data to code<br>
+          <input type="radio" name="q22" value="wrong"> Delete data<br><br>
+
+          <p>23. What is Cyberbullying?</p>
+          <input type="radio" name="q23" value="harass"> Online harassment<br>
+          <input type="radio" name="q23" value="fun"> Just fun<br><br>
+
+          <p>24. What is Malware?</p>
+          <input type="radio" name="q24" value="virus"> Harmful software<br>
+          <input type="radio" name="q24" value="app"> Useful app<br><br>
+
+          <p>25. What is Cyber hygiene?</p>
+          <input type="radio" name="q25" value="practice"> Regular safe habits<br>
+          <input type="radio" name="q25" value="wash"> Washing computer<br><br>
+
+        </form>
+        <button type="button" onclick="checkQuiz('EN')">Submit</button>
+        <p id="resultEN"></p>
+      </div>
+    </section>
+  </div>
 
   <footer>
-    <p id="footerText">© 2025 CyberSafe BD | সর্বস্বত্ব সংরক্ষিত</p>
+    <p>© 2025 CyberSafe BD | Learn and Stay Safe Online</p>
   </footer>
 
   <script>
-    let isBangla = true;
-
-    function toggleLang() {
-      if(isBangla){
-        // English version
-        document.getElementById("subtitle").innerText = "A simple platform to learn Cybersecurity in Bangla";
-        document.getElementById("navHome").innerText = "Home";
-        document.getElementById("navAbout").innerText = "About";
-        document.getElementById("navContact").innerText = "Contact";
-        document.getElementById("tipsTitle").innerText = "Online Safety Tips";
-        document.getElementById("tipsList").innerHTML = `
-          <li>Use strong passwords (letters + numbers + symbols).</li>
-          <li>Do not click unknown links.</li>
-          <li>Enable Two-Factor Authentication (2FA).</li>
-          <li>Share less personal info on social media.</li>
-        `;
-        document.getElementById("quizTitle").innerText = "Quick Quiz";
-        document.getElementById("q1").innerText = "1. Is it safe to use only name and birthdate in a password?";
-        document.getElementById("q1a").innerText = "No";
-        document.getElementById("q1b").innerText = "Yes";
-        document.getElementById("q2").innerText = "2. What will you do if you get a suspicious link in email?";
-        document.getElementById("q2a").innerText = "Ignore it";
-        document.getElementById("q2b").innerText = "Click it";
-        document.getElementById("submitBtn").innerText = "Submit";
-        document.getElementById("resTitle").innerText = "Resources";
-        document.getElementById("res1").innerHTML = `For help: <a href="https://www.police.gov.bd/" target="_blank">Bangladesh Police</a>`;
-        document.getElementById("res2").innerHTML = `Online Course: <a href="https://www.coursera.org" target="_blank">Coursera</a>`;
-        document.getElementById("footerText").innerText = "© 2025 CyberSafe BD | All Rights Reserved";
-        document.getElementById("langBtn").innerText = "বাংলায় দেখুন";
-        isBangla = false;
-      } else {
-        // Bangla version
-        document.getElementById("subtitle").innerText = "বাংলায় সহজ সাইবার নিরাপত্তা শেখার প্ল্যাটফর্ম";
-        document.getElementById("navHome").innerText = "হোম";
-        document.getElementById("navAbout").innerText = "আমাদের সম্পর্কে";
-        document.getElementById("navContact").innerText = "যোগাযোগ";
-        document.getElementById("tipsTitle").innerText = "অনলাইন নিরাপত্তার টিপস";
-        document.getElementById("tipsList").innerHTML = `
-          <li>শক্তিশালী password ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
-          <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
-          <li>দুই ধাপ যাচাইকরণ (2FA) চালু করুন।</li>
-          <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
-        `;
-        document.getElementById("quizTitle").innerText = "কুইজ";
-        document.getElementById("q1").innerText = "1. Password এ কেবল নাম ও জন্মতারিখ ব্যবহার করা কি নিরাপদ?";
-        document.getElementById("q1a").innerText = "না";
-        document.getElementById("q1b").innerText = "হ্যাঁ";
-        document.getElementById("q2").innerText = "2. অচেনা ইমেইলে suspicious লিঙ্ক এলে কী করবেন?";
-        document.getElementById("q2a").innerText = "উপেক্ষা করব";
-        document.getElementById("q2b").innerText = "ক্লিক করব";
-        document.getElementById("submitBtn").innerText = "জমা দিন";
-        document.getElementById("resTitle").innerText = "রিসোর্স";
-        document.getElementById("res1").innerHTML = `সাহায্যের জন্য: <a href="https://www.police.gov.bd/" target="_blank">বাংলাদেশ পুলিশ</a>`;
-        document.getElementById("res2").innerHTML = `অনলাইন কোর্স: <a href="https://www.coursera.org" target="_blank">Coursera</a>`;
-        document.getElementById("footerText").innerText = "© 2025 CyberSafe BD | সর্বস্বত্ব সংরক্ষিত";
-        document.getElementById("langBtn").innerText = "Switch to English";
-        isBangla = true;
-      }
+    function showBangla() {
+      document.getElementById("bangla").style.display = "block";
+      document.getElementById("english").style.display = "none";
+    }
+    function showEnglish() {
+      document.getElementById("bangla").style.display = "none";
+      document.getElementById("english").style.display = "block";
     }
 
-    function checkQuiz() {
+    function checkQuiz(lang) {
+      let form = document.getElementById("quizForm" + lang);
+      let result = document.getElementById("result" + lang);
+      let correct = {
+        q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
+        q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
+        q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
+        q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
+        q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
+      };
       let score = 0;
-      let form = document.getElementById("quizForm");
-      if (form.q1.value === "no") score++;
-      if (form.q2.value === "ignore") score++;
-      let msg = "";
-      if(score === 2) msg = isBangla ? "অসাধারণ! সব উত্তর সঠিক। 🎉" : "Excellent! All answers correct. 🎉";
-      else if(score === 1) msg = isBangla ? "ভালো চেষ্টা! তবে আরো শিখতে হবে। 🙂" : "Good try! But learn more. 🙂";
-      else msg = isBangla ? "আবার চেষ্টা করুন! 💡" : "Try again! 💡";
-      document.getElementById("result").innerText = (isBangla ? "আপনার স্কোর: " : "Your score: ") + score + "/2 — " + msg;
+      for (let q in correct) {
+        if(form[q] && form[q].value === correct[q]) score++;
+      }
+      result.innerHTML = "Your Score: " + score + " / 25";
     }
   </script>
 </body>
