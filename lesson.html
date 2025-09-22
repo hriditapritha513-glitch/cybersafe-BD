@@ -2,26 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lesson - CyberSafe BD</title>
+  <title>CyberSafe BD - Lesson</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f8f9fa; }
+    h1 { color: #1e3c72; }
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #1e3c72;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #16345c; }
+  </style>
 </head>
 <body>
-  <h1>CyberSafe BD - Study Guide</h1>
+  <h1>CyberSafe BD – Lesson</h1>
 
-  <h2>📌 Strong Password</h2>
-  <p>পাসওয়ার্ডে বড় হাতের অক্ষর, ছোট হাতের অক্ষর, সংখ্যা আর বিশেষ চিহ্ন ব্যবহার করো। যেমন: <b>Abc@2024!</b></p>
+  <div class="card">
+    <h2>🔑 Strong Passwords</h2>
+    <p>Use at least 8–12 characters with numbers, symbols, and capital letters. Never reuse the same password everywhere.</p>
+  </div>
 
-  <h2>📌 Phishing Emails চিনবে কিভাবে?</h2>
-  <p>অচেনা লিঙ্কে ক্লিক করবে না। বানান ভুল, সন্দেহজনক ঠিকানা দেখে সাবধান হও।</p>
+  <div class="card">
+    <h2>📩 Phishing Awareness</h2>
+    <p>Don’t click random links or download unknown files. Always check the sender’s email address before trusting it.</p>
+  </div>
 
-  <h2>📌 Public Wi-Fi ব্যবহার</h2>
-  <p>Public Wi-Fi–তে sensitive জিনিস (Bank, Password change) কোরো না।</p>
+  <div class="card">
+    <h2>🔒 Two-Factor Authentication</h2>
+    <p>Always enable 2FA (e.g., SMS or authenticator app). Even if your password is stolen, hackers can’t log in.</p>
+  </div>
 
-  <button onclick="nextPage()">👉 এবার After Quiz দাও</button>
+  <div class="card">
+    <h2>💻 Public Wi-Fi Safety</h2>
+    <p>Never log in to bank or email accounts on public Wi-Fi. Use a VPN if needed.</p>
+  </div>
 
-  <script>
-    function nextPage(){
-      window.location.href = "after-quiz.html";
-    }
-  </script>
+  <button onclick="window.location.href='after-quiz.html'">Take After-Quiz 🚀</button>
 </body>
 </html>
