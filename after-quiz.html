@@ -1,45 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>After Quiz - CyberSafe BD</title>
+  <title>CyberSafe BD - After Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #1e3c72; }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #218838; }
+  </style>
 </head>
 <body>
-  <h1>CyberSafe BD - After Quiz</h1>
-  <form id="afterQuiz">
-    <p>1. একটি নিরাপদ পাসওয়ার্ডে কী থাকা উচিত?</p>
-    <input type="radio" name="q1" value="a"> শুধু সংখ্যা<br>
-    <input type="radio" name="q1" value="b"> ছোট + বড় হাতের অক্ষর, সংখ্যা ও বিশেষ চিহ্ন<br>
-    <input type="radio" name="q1" value="c"> শুধু নাম<br>
+  <h1>After Quiz</h1>
+  <p>Now that you have learned, try answering again:</p>
 
-    <p>2. ফিশিং মেইল দেখলে কী করবে?</p>
-    <input type="radio" name="q2" value="a"> সাথে সাথে reply করবে<br>
-    <input type="radio" name="q2" value="b"> সন্দেহ হলে মুছে ফেলবে<br>
-    <input type="radio" name="q2" value="c"> লিঙ্কে ক্লিক করবে<br>
+  <form id="afterQuizForm">
+    <p>1. Should you use the same password everywhere?</p>
+    <label><input type="radio" name="q1" value="yes"> Yes</label>
+    <label><input type="radio" name="q1" value="no"> No</label>
 
-    <button type="submit">Submit</button>
+    <p>2. Is it safe to click every link you receive?</p>
+    <label><input type="radio" name="q2" value="yes"> Yes</label>
+    <label><input type="radio" name="q2" value="no"> No</label>
+
+    <p>3. What is 2FA used for?</p>
+    <label><input type="radio" name="q3" value="extra"> Extra security</label>
+    <label><input type="radio" name="q3" value="idk"> I don’t know</label>
+
+    <br><br>
+    <button type="submit">Submit After Quiz</button>
   </form>
 
-  <p id="message"></p>
-
   <script>
-    document.getElementById("afterQuiz").addEventListener("submit", function(e){
+    document.getElementById("afterQuizForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
-      let score = 0;
-      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
-      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
-
-      // Save after score
-      localStorage.setItem("afterScore", score);
-
-      document.getElementById("message").innerText = 
-        "তোমার After Quiz স্কোর: " + score + "/2 ✅";
-
-      // Move to result page after 2 sec
-      setTimeout(function(){
-        window.location.href = "result.html";
-      }, 2000);
+      // এখানে পরে আমরা ডেটা সংরক্ষণ + বিশ্লেষণ যোগ করব
+      alert("✅ Thank you! Your answers have been recorded.");
+      window.location.href = "index.html"; // আবার home এ নিয়ে যাবে
     });
   </script>
 </body>
