@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CyberSafe BD — Quiz & Lesson</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body { font-family: "Noto Sans", Arial, sans-serif; max-width:900px; margin:18px auto; padding:12px; line-height:1.5; }
+    h1,h2 { color:#0b4f6c }
+    .card { border:1px solid #ddd; border-radius:8px; padding:14px; margin:12px 0; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+    .btn { display:inline-block; padding:8px 14px; margin:6px 4px; border-radius:6px; cursor:pointer; border:none; background:#0b82a9; color:#fff; }
+    .btn.secondary{ background:#6c757d }
+    .hidden{ display:none; }
+    .question{ margin:12px 0; }
+    label{ display:block; margin:6px 0; cursor:pointer; }
+    input[type="text"]{ width:100%; padding:8px; border-radius:6px; border:1px solid #ccc }
+    .small{ font-size:0.9em; color:#555 }
+    .center{ text-align:center }
+    .export{ margin-top:8px }
+  </style>
+</head>
+<body>
+
+  <h1>CyberSafe BD — Quiz → Lesson → Quiz</h1>
+  <p class="small">Flow: <strong>Before Quiz → Lesson → After Quiz → Results</strong>. তুমি নিচের <em>TODO</em> অংশে প্রশ্ন ও মেটেরিয়াল পরিবর্তন করে নেবে।</p>
+
+  <!-- START: Landing / Instructions -->
+  <div id="landing" class="card">
+    <h2>How to use / কি করতে হবে</h2>
+    <ol>
+      <li>প্রথমে <strong>Before Quiz</strong> নাও (Baseline)।</li>
+      <li>Lesson/Guide পড়ো (Study material)।</li>
+      <li>পরেরটি <strong>After Quiz</strong> দাও।</li>
+      <li>Results পেজে Before vs After তুলনা হবে।</li>
+    </ol>
+    <p class="small">Data locally saved; পরবর্তীতে তুমি CSV ডাউনলোড করে গবেষণার জন্য ব্যবহার করতে পারবে।</p>
+    <div class="center">
+      <button class="btn" id="start-btn">Start Before Quiz</button>
+      <button class="btn secondary" id="view-data-btn">View All Saved Results</button>
+    </div>
+  </div>
+
+  <!-- START: Before Quiz -->
+  <div id="before-quiz" class="card hidden">
+    <h2>Before Quiz (Baseline)</h2>
+    <p class="small">প্রশ্নগুলো baseline measure করার জন্য।</p>
+
+    <!-- Optional: participant info -->
+    <label>Participant ID (optional):
+      <input type="text" id="participant-id" placeholder="e.g. School123-01 (anonymous possible)">
+    </label>
+
+    <div id="before-questions"></div>
+
+    <div class="center">
+      <button class="btn" id="before-submit">Submit Before Quiz</button>
+      <button class="btn secondary" id="before-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- START: Lesson -->
+  <div id="lesson" class="card hidden">
+    <h2>Lesson / Study Guide</h2>
+    <p><strong>TODO:</strong> নিচের text/links/কোনো video এড করে নেবে।</p>
+
+    <div id="lesson-content">
+      <!-- Example lesson — replace with your own -->
+      <h3>1. Password Hygiene</h3>
+      <p>Use long, unique passwords. Use password managers. Avoid using same password for many sites.</p>
+
+      <h3>2. Phishing Detection</h3>
+      <p>Check sender email carefully, hover on links to see real URL, avoid clicking unknown attachments.</p>
+
+      <h3>3. Digital Footprint</h3>
+      <p>Think before sharing personal info. Privacy settings important on social media.</p>
+    </div>
+
+    <div class="center">
+      <button class="btn" id="finish-lesson-btn">I finished studying — Take After Quiz</button>
+    </div>
+  </div>
+
+  <!-- START: After Quiz -->
+  <div id="after-quiz" class="card hidden">
+    <h2>After Quiz (Post Training)</h2>
+    <p class="small">প্রশ্নগুলো Before quiz–এর অনুরূপ কিন্তু প্রশ্ন/অপশনটা অলসভাবে shuffle করা আছে।</p>
+    <div id="after-questions"></div>
+
+    <div class="center">
+      <button class="btn" id="after-submit">Submit After Quiz</button>
+      <button class="btn secondary" id="after-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- START: Results -->
+  <div id="result" class="card hidden">
+    <h2>Result: Before vs After</h2>
+    <p class="small">তুমি Each participant র score localStorage এ সেভ করতে পারবে। নিচ থেকে CSV ডাউনলোড করো বা aggregated chart দেখো।</p>
+
+    <canvas id="scoreChart" width="700" height="300"></canvas>
+
+    <div class="center export">
+      <button class="btn" id="save-local-btn">Save This Participant Result</button>
+      <button class="btn secondary" id="download-csv-btn">Download All Results (CSV)</button>
+      <button class="btn secondary" id="view-all-btn">View All Saved Results (Table)</button>
+      <button class="btn" id="restart-btn">Next Participant (Restart)</button>
+    </div>
+
+    <div id="all-data" class="hidden" style="margin-top:12px"></div>
+  </div>
+
+  <script>
+    /* ===========================
+       TODO: Replace questions below
+       Put your own questions and options.
+       Keep structure: {q: "...", options: [...], answerIndex: 1}
+       =========================== */
+    const QUESTIONS = [
+      { q: "ইমেইলে যদি একটি অচেনা লিঙ্ক আসে আপনি কী করবেন?", options:["ক্লিক করবো","লিংক চেক করব/ডিলেট করব","পাসওয়ার্ড দিন"], answerIndex: 1 },
+      { q: "একই পাসওয়ার্ড অনেক সাইটে ব্যবহার করলে কি ঝুঁকি আছে?", options:["না","হ্যাঁ, সব সাইটে compromise হয়","শুধু Gmail এ"], answerIndex: 1 },
+      { q: "কোনটি ফিশিং সাইন হতে পারে?", options:["ব্যাংক থেকে 'আপনার অ্যাকাউন্ট ব্লক' ইমেইল", "বন্ধুর মেসেজ", "স্কুল নোটিফিকেশন"], answerIndex: 0 }
+    ];
+    /* =========================== */
+
+    // Utility functions
+    function shuffle(a){ return a.sort(()=>Math.random()-0.5); }
+    function $(id){ return document.getElementById(id); }
+
+    // Current participant store
+    let participant = { id: "", beforeAnswers: [], afterAnswers: [], beforeScore:0, afterScore:0 };
+
+    // Render questions (Before)
+    function renderBefore(){
+      const container = $("before-questions");
+      container.innerHTML = "";
+      QUESTIONS.forEach((qq, idx) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `<strong>Q${idx+1}.</strong> ${qq.q}`;
+        qq.options.forEach((opt, oi) => {
+          const id = `b_q${idx}_o${oi}`;
+          const label = document.createElement("label");
+          label.innerHTML = `<input type="radio" name="b_q${idx}" id="${id}" value="${oi}"> ${opt}`;
+          div.appendChild(label);
+        });
+        container.appendChild(div);
+      });
+    }
+
+    // Render after questions (can shuffle options)
+    function renderAfter(){
+      const container = $("after-questions");
+      container.innerHTML = "";
+      // Create a shallow copy and maybe shuffle order
+      QUESTIONS.forEach((qq, idx) => {
+        // optionally shuffle options for after quiz to prevent memorization
+        // we'll keep them same but could be randomized if you build mapping
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `<strong>Q${idx+1}.</strong> ${qq.q}`;
+        qq.options.forEach((opt, oi) => {
+          const id = `a_q${idx}_o${oi}`;
+          const label = document.createElement("label");
+          label.innerHTML = `<input type="radio" name="a_q${idx}" id="${id}" value="${oi}"> ${opt}`;
+          div.appendChild(label);
+        });
+        container.appendChild(div);
+      });
+    }
+
+    // Calculate score
+    function calcScore(prefix){
+      let score = 0;
+      QUESTIONS.forEach((qq, idx) => {
+        const radios = document.getElementsByName(`${prefix}_q${idx}`);
+        for(const r of radios){
+          if(r.checked){
+            const selected = Number(r.value);
+            if(selected === qq.answerIndex) score++;
+            break;
+          }
+        }
+      });
+      return score;
+    }
+
+    // Convert saved results to CSV
+    function allResultsToCSV(){
+      const raw = localStorage.getItem("cybersafe_results");
+      const arr = raw ? JSON.parse(raw) : [];
+      const header = ["participant_id","before_score","after_score","before_total","after_total","timestamp"];
+      const lines = [header.join(",")];
+      arr.forEach(row => {
+        lines.push([row.id, row.beforeScore, row.afterScore, row.beforeTotal, row.afterTotal, row.ts].join(","));
+      });
+      return lines.join("\n");
+    }
+
+    // UI handlers
+    $("start-btn").onclick = ()=>{
+      $("landing").classList.add("hidden");
+      $("before-quiz").classList.remove("hidden");
+      renderBefore();
+    };
+
+    $("view-data-btn").onclick = ()=>{
+      const raw = localStorage.getItem("cybersafe_results");
+      alert(raw ? `Saved results count: ${JSON.parse(raw).length}` : "No saved results yet.");
+    };
+
+    $("before-cancel").onclick = ()=>{
+      location.reload();
+    };
+
+    $("before-submit").onclick = ()=>{
+      participant.id = $("participant-id").value || ("anon-" + Date.now());
+      participant.beforeScore = calcScore("b");
+      participant.beforeTotal = QUESTIONS.length;
+      // store answers optional
+      participant.beforeAnswers = []; // can be extended to record answers
+      // proceed to lesson
+      $("before-quiz").classList.add("hidden");
+      $("lesson").classList.remove("hidden");
+    };
+
+    $("finish-lesson-btn").onclick = ()=>{
+      $("lesson").classList.add("hidden");
+      $("after-quiz").classList.remove("hidden");
+      renderAfter();
+    };
+
+    $("after-cancel").onclick = ()=>{
+      location.reload();
+    };
+
+    $("after-submit").onclick = ()=>{
+      participant.afterScore = calcScore("a");
+      participant.afterTotal = QUESTIONS.length;
+      participant.afterAnswers = [];
+      // show result
+      $("after-quiz").classList.add("hidden");
+      $("result").classList.remove("hidden");
+      renderChart();
+    };
+
+    // Chart & result handling
+    function renderChart(){
+      const ctx = document.getElementById("scoreChart").getContext('2d');
+      // destroy previous chart if exists
+      if(window._csChart) window._csChart.destroy();
+      window._csChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Before','After'],
+          datasets: [{
+            label: 'Quiz Score',
+            data: [participant.beforeScore, participant.afterScore],
+            borderWidth:1
+          }]
+        },
+        options: {
+          scales: { y: { beginAtZero:true, ticks:{ stepSize:1 } } },
+          plugins: {
+            title: { display: true, text: `Participant: ${participant.id}` }
+          }
+        }
+      });
+    }
+
+    // Save to localStorage
+    $("save-local-btn").onclick = ()=>{
+      const raw = localStorage.getItem("cybersafe_results");
+      const arr = raw ? JSON.parse(raw) : [];
+      arr.push({
+        id: participant.id,
+        beforeScore: participant.beforeScore,
+        afterScore: participant.afterScore,
+        beforeTotal: participant.beforeTotal,
+        afterTotal: participant.afterTotal,
+        ts: new Date().toISOString()
+      });
+      localStorage.setItem("cybersafe_results", JSON.stringify(arr));
+      alert("Saved locally. Total saved participants: " + arr.length);
+    };
+
+    // Download CSV
+    $("download-csv-btn").onclick = ()=>{
+      const csv = allResultsToCSV();
+      const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'cybersafe_results.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    // View all saved results as table
+    $("view-all-btn").onclick = ()=>{
+      const raw = localStorage.getItem("cybersafe_results");
+      const arr = raw ? JSON.parse(raw) : [];
+      const div = $("all-data");
+      div.classList.remove("hidden");
+      if(arr.length === 0){
+        div.innerHTML = "<p class='small'>No saved results.</p>";
+        return;
+      }
+      let html = "<table border='1' cellpadding='6'><tr><th>ID</th><th>Before</th><th>After</th><th>Saved at</th></tr>";
+      arr.forEach(r=>{
+        html += `<tr><td>${r.id}</td><td>${r.beforeScore}/${r.beforeTotal}</td><td>${r.afterScore}/${r.afterTotal}</td><td>${r.ts}</td></tr>`;
+      });
+      html += "</table>";
+      div.innerHTML = html;
+    };
+
+    $("restart-btn").onclick = ()=>{
+      // reset participant and go to landing so next participant can start
+      participant = { id: "", beforeAnswers: [], afterAnswers: [], beforeScore:0, afterScore:0 };
+      $("result").classList.add("hidden");
+      $("landing").classList.remove("hidden");
+    };
+
+    // On load: optionally prefill or set things
+    (function init(){
+      // If you prefer start directly:
+      // $("start-btn").click();
+    })();
+  </script>
+</body>
+  </html>
