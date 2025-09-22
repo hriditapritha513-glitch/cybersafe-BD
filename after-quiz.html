@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>After Quiz - CyberSafe BD</title>
+</head>
+<body>
+  <h1>CyberSafe BD - After Quiz</h1>
+  <form id="afterQuiz">
+    <p>1. একটি নিরাপদ পাসওয়ার্ডে কী থাকা উচিত?</p>
+    <input type="radio" name="q1" value="a"> শুধু সংখ্যা<br>
+    <input type="radio" name="q1" value="b"> ছোট + বড় হাতের অক্ষর, সংখ্যা ও বিশেষ চিহ্ন<br>
+    <input type="radio" name="q1" value="c"> শুধু নাম<br>
+
+    <p>2. ফিশিং মেইল দেখলে কী করবে?</p>
+    <input type="radio" name="q2" value="a"> সাথে সাথে reply করবে<br>
+    <input type="radio" name="q2" value="b"> সন্দেহ হলে মুছে ফেলবে<br>
+    <input type="radio" name="q2" value="c"> লিঙ্কে ক্লিক করবে<br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    document.getElementById("afterQuiz").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+
+      // Save after score
+      localStorage.setItem("afterScore", score);
+
+      document.getElementById("message").innerText = 
+        "তোমার After Quiz স্কোর: " + score + "/2 ✅";
+
+      // Move to result page after 2 sec
+      setTimeout(function(){
+        window.location.href = "result.html";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
