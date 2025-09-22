@@ -1,66 +1,57 @@
-
- 
-
-
-
-      
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>CyberSafe BD</title>
-  <meta name="description" content="Simple cyber security learning platform in Bangla and English">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberSafe BD Quiz</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 0; }
-    header { background: #2c3e50; color: white; text-align: center; padding: 20px; }
-    nav { background: #34495e; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    section { padding: 20px; }
-    .quiz { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-    button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #2ecc71; }
-    footer { background: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      color: #006699;
+    }
+    .quiz-section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    .question {
+      margin: 15px 0;
+    }
+    button {
+      background: #006699;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004466;
+    }
+    .correct-mark {
+      color: green;
+      font-weight: bold;
+      margin-left: 8px;
+    }
+    .wrong-mark {
+      color: red;
+      font-weight: bold;
+      margin-left: 8px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>CyberSafe BD</h1>
-    <p>Easy cyber security learning platform in Bangla and English</p>
-  </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <h1>CyberSafe BD Quiz</h1>
 
-  <!-- Language Switch -->
-  <section>
-    <p>
-      <a href="#" onclick="showBangla()">বাংলা</a> | 
-      <a href="#" onclick="showEnglish()">English</a>
-    </p>
-  </section>
-
-  <!-- Bangla Content -->
-  <div id="bangla">
-    <section id="tips">
-      <h2>Online Safety Tips</h2>
-      <ul>
-        <li>শক্তিশালী পাসওয়ার্ড ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
-        <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
-        <li>টু-স্টেপ ভেরিফিকেশন (2FA) চালু করুন।</li>
-        <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
-      </ul>
-    </section>
-
-    <!-- Quiz (Bangla) -->
-    <section id="quiz">
-      <h2>Quiz (25 questions)</h2>
-      <div class="quiz">
-        <form id="quizFormBN">
+  <!-- বাংলা কুইজ -->
+  <div class="quiz-section">
+    <h2>বাংলা কুইজ</h2>
+    <form name="bquiz">
+      <div class="question">
            <p>1. শুধুমাত্র নাম দিয়ে পাসওয়ার্ড ব্যবহার করা কি নিরাপদ?</p>
           <input type="radio" name="q1" value="no"> না<br>
           <input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
@@ -179,11 +170,17 @@
       </ul>
     </section>
 
-    <!-- Quiz (English) -->
-    <section id="quizEN">
-      <h2>Quiz (25 Questions)</h2>
-      <div class="quiz">
-        <form id="quizFormEN">
+    <br>
+      <button type="button" onclick="checkQuiz('bquiz', banglaAnswers, 'bresult')">Submit</button>
+    </form>
+    <p id="bresult"></p>
+  </div>
+
+  <!-- ইংরেজি কুইজ -->
+  <div class="quiz-section">
+    <h2>English Quiz</h2>
+    <form name="equiz">
+      <div class="question">
          <p>1. Is using only your name as a password safe?</p>
           <input type="radio" name="q1" value="no"> No<br>
           <input type="radio" name="q1" value="yes"> Yes<br><br>
@@ -283,14 +280,6 @@
           <p>25. What is Cyber hygiene?</p>
           <input type="radio" name="q25" value="practice"> Regular safe habits<br>
           <input type="radio" name="q25" value="wash"> Washing computer<br><br>
- 
-
-
-
-
-
-
-         
         </form>
         <button type="button" onclick="checkQuiz('EN')">Submit</button>
         <p id="resultEN"></p>
