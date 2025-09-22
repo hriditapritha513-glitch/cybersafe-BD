@@ -43,8 +43,14 @@
   <script>
     document.getElementById("quizForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      // এখানে চাইলে ডেটা save করা যাবে (পরে আলোচনা করব)
-      window.location.href = "lesson.html"; // Submit করার পর lesson.html এ যাবে
+
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "no") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "no") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "yes") score++;
+
+      localStorage.setItem("beforeScore", score); // save before score
+      window.location.href = "lesson.html"; // go to lesson page
     });
   </script>
 </body>
