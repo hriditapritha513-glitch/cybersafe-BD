@@ -2,7 +2,9 @@
  
 
 
-<!DOCTYPE html>
+
+      
+!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -48,18 +50,18 @@
       <h2>Online Safety Tips</h2>
       <ul>
         <li>শক্তিশালী পাসওয়ার্ড ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
-        <li>অজানা লিঙ্কে ক্লিক করবেন না।</li>
+        <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
         <li>টু-স্টেপ ভেরিফিকেশন (2FA) চালু করুন।</li>
-        <li>সোশ্যাল মিডিয়ায় কম ব্যক্তিগত তথ্য শেয়ার করুন।</li>
+        <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
       </ul>
     </section>
 
+    <!-- Quiz (Bangla) -->
     <section id="quiz">
       <h2>Quiz (25 questions)</h2>
       <div class="quiz">
         <form id="quizFormBN">
-
-          <p>1. শুধুমাত্র নাম দিয়ে পাসওয়ার্ড ব্যবহার করা কি নিরাপদ?</p>
+           <p>1. শুধুমাত্র নাম দিয়ে পাসওয়ার্ড ব্যবহার করা কি নিরাপদ?</p>
           <input type="radio" name="q1" value="no"> না<br>
           <input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
 
@@ -158,7 +160,6 @@
           <p>25. Cyber hygiene বলতে কী বোঝায়?</p>
           <input type="radio" name="q25" value="practice"> নিয়মিত নিরাপত্তা অভ্যাস<br>
           <input type="radio" name="q25" value="wash"> কম্পিউটার ধোয়া<br><br>
-
         </form>
         <button type="button" onclick="checkQuiz('BN')">Submit</button>
         <p id="resultBN"></p>
@@ -178,13 +179,12 @@
       </ul>
     </section>
 
+    <!-- Quiz (English) -->
     <section id="quizEN">
       <h2>Quiz (25 Questions)</h2>
       <div class="quiz">
         <form id="quizFormEN">
-
-          <!-- English quiz same as before (25 Qs) -->
-          <p>1. Is using only your name as a password safe?</p>
+         <p>1. Is using only your name as a password safe?</p>
           <input type="radio" name="q1" value="no"> No<br>
           <input type="radio" name="q1" value="yes"> Yes<br><br>
 
@@ -283,7 +283,14 @@
           <p>25. What is Cyber hygiene?</p>
           <input type="radio" name="q25" value="practice"> Regular safe habits<br>
           <input type="radio" name="q25" value="wash"> Washing computer<br><br>
+ 
 
+
+
+
+
+
+         
         </form>
         <button type="button" onclick="checkQuiz('EN')">Submit</button>
         <p id="resultEN"></p>
@@ -296,52 +303,31 @@
   </footer>
 
   <script>
-    function showBangla() {<script>
     function showBangla() {
       document.getElementById("bangla").style.display = "block";
       document.getElementById("english").style.display = "none";
     }
-
     function showEnglish() {
       document.getElementById("bangla").style.display = "none";
       document.getElementById("english").style.display = "block";
     }
 
-    // Answer keys
-    const answersBN = {
-      q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
-      q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
-      q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
-      q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
-      q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
-    };
-
-    const answersEN = answersBN; // same answers
-
     function checkQuiz(lang) {
+      let form = document.getElementById("quizForm" + lang);
+      let result = document.getElementById("result" + lang);
+      let correct = {
+        q1:"no", q2:"ignore", q3:"two", q4:"no", q5:"hack",
+        q6:"usb", q7:"strong", q8:"scam", q9:"secure", q10:"often",
+        q11:"protect", q12:"trick", q13:"block", q14:"onetime", q15:"no",
+        q16:"malware", q17:"protect", q18:"mix", q19:"paper", q20:"junk",
+        q21:"security", q22:"secure", q23:"harass", q24:"virus", q25:"practice"
+      };
       let score = 0;
-      let total = 25;
-      let form, answers, resultId;
-
-      if (lang === "BN") {
-        form = document.getElementById("quizFormBN");
-        answers = answersBN;
-        resultId = "resultBN";
-      } else {
-        form = document.getElementById("quizFormEN");
-        answers = answersEN;
-        resultId = "resultEN";
+      for (let q in correct) {
+        let chosen = form.querySelector('input[name="'+q+'"]:checked');
+        if(chosen && chosen.value === correct[q]) score++;
       }
-
-      for (let q in answers) {
-        let selected = form.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) {
-          score++;
-        }
-      }
-
-      document.getElementById(resultId).innerText = 
-        "You scored " + score + " out of " + total;
+      result.innerHTML = "Your Score: " + score + " / 25";
     }
   </script>
 </body>
