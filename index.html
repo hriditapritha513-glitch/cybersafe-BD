@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>CyberSafe BD</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 0; }
+    header { background: #2c3e50; color: white; text-align: center; padding: 20px; }
+    nav { background: #34495e; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
+    section { padding: 20px; }
+    .quiz { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CyberSafe BD</h1>
+    <p>বাংলায় সহজ সাইবার নিরাপত্তা শেখার প্ল্যাটফর্ম</p>
+  </header>
+
+  <nav>
+    <a href="#tips">Tips</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#resources">Resources</a>
+  </nav>
+
+  <section id="tips">
+    <h2>অনলাইন নিরাপত্তার টিপস</h2>
+    <ul>
+      <li>শক্তিশালী password ব্যবহার করুন (অক্ষর + সংখ্যা + চিহ্ন)।</li>
+      <li>অচেনা লিঙ্কে ক্লিক করবেন না।</li>
+      <li>দুই ধাপ যাচাইকরণ (2FA) চালু করুন।</li>
+      <li>সোশ্যাল মিডিয়ায় ব্যক্তিগত তথ্য কম শেয়ার করুন।</li>
+    </ul>
+  </section>
+
+  <section id="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="quiz">
+      <form id="quizForm">
+        <p>1. Password এ কেবল নাম ও জন্মতারিখ ব্যবহার করা কি নিরাপদ?</p>
+        <input type="radio" name="q1" value="no"> না<br>
+        <input type="radio" name="q1" value="yes"> হ্যাঁ<br><br>
+
+        <p>2. অচেনা ইমেইলে suspicious লিঙ্ক এলে কী করবেন?</p>
+        <input type="radio" name="q2" value="ignore"> উপেক্ষা করব<br>
+        <input type="radio" name="q2" value="click"> ক্লিক করব<br><br>
+
+        <button type="button" onclick="checkQuiz()">Submit</button>
+      </form>
+      <p id="result"></p>
+    </div>
+  </section>
+
+  <section id="resources">
+    <h2>রিসোর্স</h2>
+    <p>সাহায্যের জন্য: 
+      <a href="https://www.police.gov.bd/" target="_blank">বাংলাদেশ পুলিশ</a>
+    </p>
+    <p>অনলাইন কোর্স: <a href="https://www.coursera.org" target="_blank">Coursera</a></p>
+  </section>
+
+  <script>
+    function checkQuiz() {
+      let score = 0;
+      let form = document.getElementById("quizForm");
+      if (form.q1 && form.q1.value === "no") score++;
+      if (form.q2 && form.q2.value === "ignore") score++;
+      document.getElementById("result").innerText = "আপনার স্কোর: " + score + "/2";
+    }
+  </script>
+</body>
+</html>
