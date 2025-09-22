@@ -1,4 +1,8 @@
 
+
+</html>
+
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -15,6 +19,19 @@
     input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
     button { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
     button:hover { background: #219150; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      section { padding: 15px; }
+      form { padding: 15px; }
+      input, textarea { font-size: 14px; }
+      button { width: 100%; padding: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 20px; }
+      nav a { display: block; margin: 8px 0; }
+    }
   </style>
 </head>
 <body>
@@ -38,15 +55,15 @@
 
     <!-- Bangla Form -->
     <div id="bangla">
-      <form>
+      <form action="https://formspree.io/f/movkakak" method="POST">
         <label for="name">আপনার নাম লিখুন:</label>
-        <input type="text" id="name" name="name" placeholder="নাম লিখুন">
+        <input type="text" id="name" name="name" placeholder="নাম লিখুন" required>
 
         <label for="email">আপনার ইমেইল লিখুন:</label>
-        <input type="email" id="email" name="email" placeholder="ইমেইল লিখুন">
+        <input type="email" id="email" name="email" placeholder="ইমেইল লিখুন" required>
 
         <label for="message">আপনার বার্তা লিখুন:</label>
-        <textarea id="message" name="message" rows="5" placeholder="বার্তা লিখুন"></textarea>
+        <textarea id="message" name="message" rows="5" placeholder="বার্তা লিখুন" required></textarea>
 
         <button type="submit">পাঠান</button>
       </form>
@@ -54,15 +71,15 @@
 
     <!-- English Form -->
     <div id="english" style="display:none;">
-      <form>
+      <form action="https://formspree.io/f/movkakak" method="POST">
         <label for="name-en">Your Name:</label>
-        <input type="text" id="name-en" name="name" placeholder="Enter your name">
+        <input type="text" id="name-en" name="name" placeholder="Enter your name" required>
 
         <label for="email-en">Your Email:</label>
-        <input type="email" id="email-en" name="email" placeholder="Enter your email">
+        <input type="email" id="email-en" name="email" placeholder="Enter your email" required>
 
         <label for="message-en">Your Message:</label>
-        <textarea id="message-en" name="message" rows="5" placeholder="Write your message"></textarea>
+        <textarea id="message-en" name="message" rows="5" placeholder="Write your message" required></textarea>
 
         <button type="submit">Send</button>
       </form>
@@ -81,5 +98,3 @@
   </script>
 </body>
 </html>
-
-
